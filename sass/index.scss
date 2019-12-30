@@ -1,0 +1,106 @@
+// Theme Day Button
+$day_background: #F7C9F3;
+$day_border: 1px solid #110038;
+$day_box_shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+// Theme Night Button
+$night_background: #EE3EFE;
+$night_border: 1px solid #110038;
+$night_box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+
+// Box Themes
+$day_background_image:linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+$night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+$shadowbox: 0 1px 0 0 #110038;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 115px;
+}
+
+.nav-buttons{
+    display: flex;
+}
+
+.nav-buttons {
+    .btn, .btn-select, a{
+        margin-left: 16px;
+        font-size: 16px;
+    }
+
+    .btn, a {
+        color: #110038;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 18px;
+        text-decoration: none;
+    }
+
+    a::before{
+        border-bottom: 1px solid #f00;
+        display: table;
+        width: 8px;
+        height: 2px;
+    }
+}
+
+#web-logo{
+    position: relative;
+    left: -9px;
+}
+
+.color-theme1{
+    background-image: $day_background_image ; 
+    box-shadow: $shadowbox;
+}
+
+.color-theme2{
+    background-image: $night_background_image;
+    box-shadow: $shadowbox;
+}
+
+.top-bar{
+    height: 23px;
+    padding: 3px 0 4px 7px;
+}
+
+.container-centered{
+    margin-left: 100px;
+    margin-right: 140px;
+}
+
+.btn {
+    width: 144px;
+    height: 36px;
+}
+
+.btn-theme-day{
+    background: $day_background;
+    border: $day_border;
+    box-shadow: $day_box_shadow;
+}
+
+.btn-theme-night{
+    background: $night_background;
+    border: $night_border;
+    box-shadow: $night_box-shadow;
+}
+
+.btn-select .btn:last-child{
+    margin-left: -3px;
+    width: 36px;
+}
+
+
