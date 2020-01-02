@@ -18,6 +18,7 @@
 
 .nav-buttons {
   display: flex;
+  align-items: center;
 }
 
 .nav-buttons .btn, .nav-buttons .btn-select, .nav-buttons a {
@@ -31,11 +32,12 @@
   line-height: 18px;
   text-decoration: none;
 }
-.nav-buttons a::before {
-  border-bottom: 1px solid #f00;
-  display: table;
+.nav-buttons #short_underline {
   width: 8px;
-  height: 2px;
+  border: 1px solid #110038;
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 1px;
 }
 
 #web-logo {

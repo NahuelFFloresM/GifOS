@@ -32,6 +32,7 @@ $shadowbox: 0 1px 0 0 #110038;
 
 .nav-buttons{
     display: flex;
+    align-items: center;
 }
 
 .nav-buttons {
@@ -48,11 +49,12 @@ $shadowbox: 0 1px 0 0 #110038;
         text-decoration: none;
     }
 
-    a::before{
-        border-bottom: 1px solid #f00;
-        display: table;
+    #short_underline{
         width: 8px;
-        height: 2px;
+        border: 1px solid #110038;
+        position: absolute;
+        margin-top: 18px;
+        margin-left: 1px;
     }
 }
 
