@@ -15,11 +15,25 @@
             <img src="assets/gifOF_logo.png" alt="Web Logo" id="web-logo">
             <div class="nav-buttons">
                 <button class="btn btn-theme-day">Crear Guifos</button>
-                <div class="btn-select">
-                    <button class="btn btn-theme-day">Elegir Tema</button>
-                    <button class="btn btn-theme-day"><img src="./assets/dropdown.svg" alt="Theme Dropdown"></button>
+                <div class="pos-relative btn-select">
+                    <button class="btn btn-theme-day" for="input-nb">Elegir Tema</button>
+                    <button class="btn btn-theme-day drop-down-button" for="input-nb"><img src="./assets/dropdown.svg" alt="Theme Dropdown"></button>
+                    <input type="checkbox" class="toggler" id="input-nb">
+                    <div id="drop-down">
+                        <button>a</button>
+                        <button>b</button>
+                    </div>
                 </div>
-                <a href=""><span id="short_underline"></span> Mis Guifos</a>
+                <div class="pos-relative" id="mis-guifos">
+                    <a href=""><span id="short_underline"></span> Mis Guifos</a>
+                </div>
+            </div>
+        </div>
+        <div class="search-bar box-day">
+            <header class="color-theme1">Buscar</header>
+            <div class="display-inline">
+                <input type="text" id="search-input" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
+                <button class="btn search-btn-inactive"><img src="./assets/lupa.svg" alt="Search Logo"> Buscar</button>
             </div>
         </div>
     </div>

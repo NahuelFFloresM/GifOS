@@ -10,7 +10,7 @@ $night_box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
 // Box Themes
 $day_background_image:linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-$shadowbox: 0 1px 0 0 #110038;
+
 
 * {
     margin: 0;
@@ -21,6 +21,10 @@ $shadowbox: 0 1px 0 0 #110038;
     color: #FFFFFF;
     letter-spacing: 0;
     font-weight: 400;
+}
+
+.pos-relative{
+    position: relative;
 }
 
 .nav-bar{
@@ -36,9 +40,8 @@ $shadowbox: 0 1px 0 0 #110038;
 }
 
 .nav-buttons {
-    .btn, .btn-select, a{
+    .btn, #mis-guifos{
         margin-left: 16px;
-        font-size: 16px;
     }
 
     .btn, a {
@@ -47,8 +50,34 @@ $shadowbox: 0 1px 0 0 #110038;
         text-align: center;
         line-height: 18px;
         text-decoration: none;
+        font-size: 16px;
     }
 
+    #mis-guifos{
+        width: 95px;
+        height: 32px;
+
+        &:hover{
+            border: 1px dotted #110038;
+
+            a {
+                margin-top: -1px;
+                margin-left: -1px;
+            }
+        }
+
+        a { 
+            position: absolute;
+            top: 20%;
+            bottom: 20%;
+    
+            &:active{
+                opacity: 50%;
+            }
+        }
+    }
+
+    
     #short_underline{
         width: 8px;
         border: 1px solid #110038;
@@ -58,6 +87,29 @@ $shadowbox: 0 1px 0 0 #110038;
     }
 }
 
+.btn-select{
+    .drop-down-button{
+        margin-left: -5px;
+        width: 36px;
+    }
+
+    #drop-down{
+        display: none;
+        position: absolute;
+    }
+
+    .btn:active ~ #drop-down{
+        display: block;
+    }
+}
+
+#input-nb{
+    position: absolute;
+    visibility: hidden;
+}
+
+
+
 #web-logo{
     position: relative;
     left: -9px;
@@ -65,17 +117,16 @@ $shadowbox: 0 1px 0 0 #110038;
 
 .color-theme1{
     background-image: $day_background_image ; 
-    box-shadow: $shadowbox;
 }
 
 .color-theme2{
     background-image: $night_background_image;
-    box-shadow: $shadowbox;
 }
 
 .top-bar{
     height: 23px;
     padding: 3px 0 4px 7px;
+    box-shadow: 0 1px 0 0 #110038;
 }
 
 .container-centered{
@@ -91,18 +142,59 @@ $shadowbox: 0 1px 0 0 #110038;
 .btn-theme-day{
     background: $day_background;
     border: $day_border;
-    box-shadow: $day_box_shadow;
 }
 
 .btn-theme-night{
     background: $night_background;
     border: $night_border;
-    box-shadow: $night_box-shadow;
 }
 
-.btn-select .btn:last-child{
-    margin-left: -3px;
-    width: 36px;
+.search-bar{
+    header{
+        padding: 3px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    #search-input{
+        background: #FFFFFF;
+        border: 1px solid #979797;
+        box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+        width: 87%;
+        height: 48px;
+        color: #110038;
+        margin: 12px 8px 12px 15px;
+        padding-left: 16px;
+        font-size: 16px;
+        line-height: 22px;
+
+        &::placeholder{
+            color: #B4B4B4;
+        }
+    }
+
+    .btn{
+        width: 102px;
+        font-size: 16px;
+        color: #B4B4B4;
+        letter-spacing: 0;
+        line-height: 18px;
+
+        img{
+            margin-top: 10px;
+        }
+    }
 }
+
+.display-inline{
+    display: inline;
+}
+
+.box-day{
+    background: #E6E6E6;
+    padding: 3px;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
 
 
