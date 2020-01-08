@@ -70,6 +70,7 @@
 .btn-select #drop-down {
   display: none;
   position: absolute;
+  padding: 10px;
 }
 .btn-select .btn:active ~ #drop-down {
   display: block;

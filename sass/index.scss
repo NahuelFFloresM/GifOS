@@ -96,6 +96,7 @@ $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
     #drop-down{
         display: none;
         position: absolute;
+        padding: 10px;
     }
 
     .btn:active ~ #drop-down{
