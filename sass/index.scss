@@ -10,7 +10,7 @@ $night_box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
 // Box Themes
 $day_background_image:linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-
+$box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
 * {
     margin: 0;
@@ -40,7 +40,7 @@ $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
 .nav-buttons {
-    .btn, #mis-guifos{
+    & > *{
         margin-left: 16px;
     }
 
@@ -87,16 +87,28 @@ $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
     }
 }
 
-.btn-select{
+#dropdown-buttons {
+    
+    & > .btn:first-child{
+        width: 133px;
+    }
+
+    &:hover > .btn{
+        outline: 1px dotted #110038;
+        outline-offset: -3px;
+    }
+
     .drop-down-button{
-        margin-left: -5px;
-        width: 36px;
+        margin-left: -3px;
+        width: 38px;
     }
 
     #drop-down{
         display: none;
         position: absolute;
         padding: 10px;
+        background: #E6E6E6;
+        box-shadow: $box;
     }
 
     .btn:active ~ #drop-down{
@@ -104,12 +116,28 @@ $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
     }
 }
 
-#input-nb{
-    position: absolute;
-    visibility: hidden;
+.btn:hover{
+    outline: 1px dotted #110038;
+    outline-offset: -3px;
 }
 
+#drop-down .btn{
+    width: 150px;
+    margin: 0px;
 
+    &:first-child{
+        background: #FFF4FD;
+        border: 1px solid #CCA6C9;
+        box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+        margin-bottom:10px;
+    }
+
+    &:last-child{
+        background: #F0F0F0;
+        border: 1px solid #808080;
+        box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    }
+}
 
 #web-logo{
     position: relative;
@@ -136,8 +164,8 @@ $night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
 .btn {
-    width: 144px;
-    height: 36px;
+    width: 146px;
+    height: 38px;
 }
 
 .btn-theme-day{
