@@ -17,13 +17,13 @@
                 <button class="btn btn-theme-day">Crear Guifos</button>
                 <div class="pos-relative btn-select" id="dropdown-buttons">
                     <button class="btn btn-theme-day">Elegir Tema</button>
-                    <button class="btn btn-theme-day drop-down-button"><img src="./assets/dropdown.svg" alt="Theme Dropdown"></button>
-                    <div id="drop-down">
+                    <button class="btn btn-theme-day drop-down-button"><img src="./assets/dropdown.svg" alt="Theme Dropdown" class="icon"></button>
+                    <div id="drop-down" style="display: none;">
                         <button class="btn" onClick="changeTheme('day')">Sailor Day</button >
                         <button class="btn" onClick="changeTheme('night')">Sailor Night</button>
                     </div>
                 </div>
-                <div class="pos-relative" id="mis-guifos">
+                <div class="pos-relative hover-day" id="mis-guifos">
                     <a href=""><span id="short_underline"></span> Mis Guifos</a>
                 </div>
             </div>

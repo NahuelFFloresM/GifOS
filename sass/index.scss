@@ -17,8 +17,8 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Chakra Petch', sans-serif;
+    color: white;
     font-size: 12px;
-    color: #FFFFFF;
     letter-spacing: 0;
     font-weight: 400;
 }
@@ -45,7 +45,6 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
 
     .btn, a {
-        color: #110038;
         letter-spacing: 0;
         text-align: center;
         line-height: 18px;
@@ -55,11 +54,8 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
     #mis-guifos{
         width: 95px;
-        height: 32px;
-
+        height: 32px;        
         &:hover{
-            border: 1px dotted #110038;
-
             a {
                 margin-top: -1px;
                 margin-left: -1px;
@@ -70,6 +66,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
             position: absolute;
             top: 20%;
             bottom: 20%;
+            color: #110038;
     
             &:active{
                 opacity: 50%;
@@ -85,6 +82,14 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         margin-top: 18px;
         margin-left: 1px;
     }
+}
+
+.hover-day:hover{
+    border: 1px dotted #110038;
+}
+
+.hover-night:hover{
+    border: 1px dotted #FFFFFF;
 }
 
 #dropdown-buttons {
@@ -104,7 +109,6 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
 
     #drop-down{
-        display: none;
         position: absolute;
         padding: 10px;
         background: #E6E6E6;
@@ -166,16 +170,19 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 .btn {
     width: 146px;
     height: 38px;
+    color: #110038;
 }
 
 .btn-theme-day{
     background: $day_background;
     border: $day_border;
+    color: #110038;
 }
 
 .btn-theme-night{
     background: $night_background;
     border: $night_border;
+    color: #FFFFFF;
 }
 
 .search-bar{

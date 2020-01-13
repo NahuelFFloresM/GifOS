@@ -3,8 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Chakra Petch", sans-serif;
+  color: white;
   font-size: 12px;
-  color: #FFFFFF;
   letter-spacing: 0;
   font-weight: 400;
 }
@@ -29,7 +29,6 @@
   margin-left: 16px;
 }
 .nav-buttons .btn, .nav-buttons a {
-  color: #110038;
   letter-spacing: 0;
   text-align: center;
   line-height: 18px;
@@ -40,9 +39,6 @@
   width: 95px;
   height: 32px;
 }
-.nav-buttons #mis-guifos:hover {
-  border: 1px dotted #110038;
-}
 .nav-buttons #mis-guifos:hover a {
   margin-top: -1px;
   margin-left: -1px;
@@ -51,6 +47,7 @@
   position: absolute;
   top: 20%;
   bottom: 20%;
+  color: #110038;
 }
 .nav-buttons #mis-guifos a:active {
   opacity: 50%;
@@ -61,6 +58,14 @@
   position: absolute;
   margin-top: 18px;
   margin-left: 1px;
+}
+
+.hover-day:hover {
+  border: 1px dotted #110038;
+}
+
+.hover-night:hover {
+  border: 1px dotted #FFFFFF;
 }
 
 #dropdown-buttons > .btn:first-child {
@@ -75,7 +80,6 @@
   width: 38px;
 }
 #dropdown-buttons #drop-down {
-  display: none;
   position: absolute;
   padding: 10px;
   background: #E6E6E6;
@@ -133,16 +137,19 @@
 .btn {
   width: 146px;
   height: 38px;
+  color: #110038;
 }
 
 .btn-theme-day {
   background: #F7C9F3;
   border: 1px solid #110038;
+  color: #110038;
 }
 
 .btn-theme-night {
   background: #EE3EFE;
   border: 1px solid #110038;
+  color: #FFFFFF;
 }
 
 .search-bar header {
