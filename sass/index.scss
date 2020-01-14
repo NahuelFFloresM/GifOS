@@ -1,10 +1,9 @@
 // Theme Day Button
 $day_background: #F7C9F3;
-$day_border: 1px solid #110038;
+$border: 1px solid #110038;
 $day_box_shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 // Theme Night Button
 $night_background: #EE3EFE;
-$night_border: 1px solid #110038;
 $night_box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
 
 // Box Themes
@@ -75,7 +74,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
 
     
-    #short_underline{
+    .short_underline{
         width: 8px;
         border: 1px solid #110038;
         position: absolute;
@@ -108,11 +107,18 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         width: 38px;
     }
 
-    #drop-down{
+    .drop-down{
         position: absolute;
         padding: 10px;
         background: #E6E6E6;
         box-shadow: $box;
+    }
+
+    .drop-down-night{
+        position: absolute;
+        padding: 10px;
+        background: #B4B4B4;
+        box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
     }
 
     .btn:active ~ #drop-down{
@@ -127,20 +133,39 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
 #drop-down .btn{
     width: 150px;
-    margin: 0px;
+    text-align: left;
+    text-indent: 16px;
 
     &:first-child{
+        margin-bottom: 10px;
+    }
+
+
+    &.btn-sailor-day{
         background: #FFF4FD;
         border: 1px solid #CCA6C9;
         box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
-        margin-bottom:10px;
     }
 
-    &:last-child{
+    &.btn-sailor-day2{
+        background: #CCCCCC;
+        border: 1px solid #808080;
+        box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    }
+
+    &.btn-sailor-night{
         background: #F0F0F0;
         border: 1px solid #808080;
         box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
     }
+
+    &.btn-sailor-night2{
+        background: #2E32FB;
+        border: 1px solid rgba(51,53,143,0.20);
+        box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+    }
+
+
 }
 
 #web-logo{
@@ -175,13 +200,15 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
 .btn-theme-day{
     background: $day_background;
-    border: $day_border;
+    border: $border;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
     color: #110038;
 }
 
 .btn-theme-night{
     background: $night_background;
-    border: $night_border;
+    border: $border;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
     color: #FFFFFF;
 }
 

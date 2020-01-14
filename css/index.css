@@ -52,7 +52,7 @@
 .nav-buttons #mis-guifos a:active {
   opacity: 50%;
 }
-.nav-buttons #short_underline {
+.nav-buttons .short_underline {
   width: 8px;
   border: 1px solid #110038;
   position: absolute;
@@ -79,11 +79,17 @@
   margin-left: -3px;
   width: 38px;
 }
-#dropdown-buttons #drop-down {
+#dropdown-buttons .drop-down {
   position: absolute;
   padding: 10px;
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+#dropdown-buttons .drop-down-night {
+  position: absolute;
+  padding: 10px;
+  background: #B4B4B4;
+  box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 #dropdown-buttons .btn:active ~ #drop-down {
   display: block;
@@ -96,18 +102,31 @@
 
 #drop-down .btn {
   width: 150px;
-  margin: 0px;
+  text-align: left;
+  text-indent: 16px;
 }
 #drop-down .btn:first-child {
+  margin-bottom: 10px;
+}
+#drop-down .btn.btn-sailor-day {
   background: #FFF4FD;
   border: 1px solid #CCA6C9;
   box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
-  margin-bottom: 10px;
 }
-#drop-down .btn:last-child {
+#drop-down .btn.btn-sailor-day2 {
+  background: #CCCCCC;
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+#drop-down .btn.btn-sailor-night {
   background: #F0F0F0;
   border: 1px solid #808080;
   box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+#drop-down .btn.btn-sailor-night2 {
+  background: #2E32FB;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
 
 #web-logo {
@@ -143,12 +162,14 @@
 .btn-theme-day {
   background: #F7C9F3;
   border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
 }
 
 .btn-theme-night {
   background: #EE3EFE;
   border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
 }
 
