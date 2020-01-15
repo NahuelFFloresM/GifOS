@@ -1,5 +1,6 @@
 // CONFIGURATION TO GIF API
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
+var sailorThemeActive ;
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina, determina cambio y luego cambia segun los pasos: 
@@ -27,6 +28,7 @@ function changeTheme(theme){
     // const ddNight = 'fordward.svg';
     //Buttons
     var themeDay = theme ==='day' ? true:false;
+    sailorThemeActive = themeDay;
     var btnElements;
     if (themeDay){
         btnElements = document.getElementsByClassName(btnNight);
@@ -160,9 +162,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         else{document.getElementById('drop-down').style.display = "none"}
     });
 
-    document.getElementById('dropdown-buttons').addEventListener('mouseleave', function (event) {
+    var ddbtns = document.getElementById('dropdown-buttons');
+    ddbtns.addEventListener('mouseleave', function (event) {
         document.getElementById('drop-down').style.display = "none";
     });
+    ddbtns.addEventListener('mouseover', function (event) {
+        var hovers = document.getElementsByClassName('same-hover');
+        hovers[0].classList.replace('btn-theme-day','same-hover-day');
+        hovers[1].classList.replace('btn-theme-day','same-hover-day');
+    });
+
+    ddbtns.addEventListener('mouseleave', function (event) {
+        var hovers = document.getElementsByClassName('same-hover');
+        hovers[0].classList.replace('btn-theme-day','same-hover-day');
+        hovers[1].classList.replace('btn-theme-day','same-hover-day');
+    });
+
+
 
     
 })
