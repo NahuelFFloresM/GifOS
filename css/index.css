@@ -9,6 +9,14 @@
   font-weight: 400;
 }
 
+.bg-day:hover {
+  background: #E6BBE2;
+}
+
+.bg-night:hover {
+  background: #CE36DB;
+}
+
 .pos-relative {
   position: relative;
 }
@@ -52,12 +60,16 @@
 .nav-buttons #mis-guifos a:active {
   opacity: 50%;
 }
-.nav-buttons .short_underline {
+.nav-buttons .short-underline-day, .nav-buttons .short-underline-night {
   width: 8px;
   border: 1px solid #110038;
   position: absolute;
   margin-top: 18px;
   margin-left: 1px;
+  opacity: 1;
+}
+.nav-buttons .short-underline-night {
+  opacity: 0;
 }
 
 .hover-day:hover {
@@ -74,6 +86,7 @@
 .btn-select:hover > .btn {
   outline: 1px dotted #110038;
   outline-offset: -3px;
+  background: inherit;
 }
 .btn-select .drop-down-button {
   margin-left: -3px;
@@ -90,9 +103,6 @@
   padding: 10px;
   background: #B4B4B4;
   box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
-}
-.btn-select .btn:active ~ #drop-down {
-  display: block;
 }
 
 #drop-down .btn {
@@ -168,25 +178,14 @@
   background: #E6BBE2;
 }
 
-.same-hover-day {
-  border: 1px solid #110038;
-  box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-  color: #110038;
-  background: #E6BBE2;
-}
-
-.same-hover-night {
-  background: #CE36DB;
-  border: 1px solid #110038;
-  box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-  color: #FFFFFF;
-}
-
 .btn-theme-night {
   background: #EE3EFE;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
+}
+.btn-theme-night:hover {
+  background: #CE36DB;
 }
 
 .search-bar header {

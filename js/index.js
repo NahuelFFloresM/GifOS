@@ -1,6 +1,5 @@
 // CONFIGURATION TO GIF API
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
-var sailorThemeActive ;
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina, determina cambio y luego cambia segun los pasos: 
@@ -28,7 +27,6 @@ function changeTheme(theme){
     // const ddNight = 'fordward.svg';
     //Buttons
     var themeDay = theme ==='day' ? true:false;
-    sailorThemeActive = themeDay;
     var btnElements;
     if (themeDay){
         btnElements = document.getElementsByClassName(btnNight);
@@ -39,6 +37,9 @@ function changeTheme(theme){
 
         btnSailor = document.getElementsByClassName('btn-sailor-night2');
         replaceClases(btnSailor,'btn-sailor-night2','btn-sailor-night');
+
+        btnSailor = document.getElementsByClassName('bg-night');
+        replaceClases(btnSailor,'bg-night','bg-day');
     } else {
         btnElements = document.getElementsByClassName(btnDay);
         replaceClases(btnElements,btnDay,btnNight);
@@ -48,6 +49,9 @@ function changeTheme(theme){
 
         btnSailor = document.getElementsByClassName('btn-sailor-night');
         replaceClases(btnSailor,'btn-sailor-night','btn-sailor-night2');
+
+        btnSailor = document.getElementsByClassName('bg-day');
+        replaceClases(btnSailor,'bg-day','bg-night');
     }
 
     //Top Bars
@@ -92,27 +96,18 @@ function changeTheme(theme){
         }
     }
 
-    var subline = document.getElementsByClassName('short_underline');
+    var subline;
     if (themeDay){
-        for(var i =0; i<subline.length;i++){
-            subline[i].style.borderColor = bgBodyNight;
-            if(subline[i].classList.contains('btn-sailor-day')){
-                subline[i].style.opacity = '1';
-            };
-            if(subline[i].classList.contains('btn-sailor-night')){
-                subline[i].style.opacity = '0';
-            };
-        }
+        subline = document.getElementsByClassName('short-underline-night');
+        console.log(subline);
+        subline[0].style.opacity = '0';
+        subline = document.getElementsByClassName('short-underline-day');
+        subline[0].style.opacity = '1';
     } else {
-        for(var i =0; i<subline.length;i++){
-            subline[i].style.borderColor = bgBodyDay;
-            if(subline[i].classList.contains('btn-sailor-day')){
-                subline[i].style.opacity = '0';
-            };
-            if(subline[i].classList.contains('btn-sailor-night')){
-                subline[i].style.opacity = '1';
-            };
-        }
+        subline = document.getElementsByClassName('short-underline-day');
+        subline[0].style.opacity = '0';
+        subline = document.getElementsByClassName('short-underline-night');
+        subline[0].style.opacity = '1';
     }
 
     //Hover Link
@@ -153,33 +148,12 @@ function replaceClases(array, themeOld, themeNew){
     }
 }
 
-/// DOC READY EVENTS TO LINK
-document.addEventListener('DOMContentLoaded', (event) => {
+document.getElementById('dropdown-buttons').addEventListener('click', function (event) {
+    var status = document.getElementById('drop-down').style.display;
+    if (status == 'none'){document.getElementById('drop-down').style.display="block"}
+    else{document.getElementById('drop-down').style.display = "none"}
+});
 
-    document.getElementById('dropdown-buttons').addEventListener('click', function (event) {
-        var status = document.getElementById('drop-down').style.display;
-        if (status == 'none'){document.getElementById('drop-down').style.display="block"}
-        else{document.getElementById('drop-down').style.display = "none"}
-    });
-
-    var ddbtns = document.getElementById('dropdown-buttons');
-    ddbtns.addEventListener('mouseleave', function (event) {
-        document.getElementById('drop-down').style.display = "none";
-    });
-    ddbtns.addEventListener('mouseover', function (event) {
-        var hovers = document.getElementsByClassName('same-hover');
-        hovers[0].classList.replace('btn-theme-day','same-hover-day');
-        hovers[1].classList.replace('btn-theme-day','same-hover-day');
-    });
-
-    ddbtns.addEventListener('mouseleave', function (event) {
-        var hovers = document.getElementsByClassName('same-hover');
-        hovers[0].classList.replace('btn-theme-day','same-hover-day');
-        hovers[1].classList.replace('btn-theme-day','same-hover-day');
-    });
-
-
-
-    
-})
-
+document.getElementById('dropdown-buttons').addEventListener('mouseleave', function (event) {
+    document.getElementById('drop-down').style.display = "none";
+});

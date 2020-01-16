@@ -1,5 +1,7 @@
 // Theme Day Button
 $day_background: #F7C9F3;
+$day_bg_hover: #E6BBE2;
+$night_bg_hover: #CE36DB;
 $border: 1px solid #110038;
 $day_box_shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 // Theme Night Button
@@ -20,6 +22,13 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     font-size: 12px;
     letter-spacing: 0;
     font-weight: 400;
+}
+.bg-day:hover{
+    background: $day_bg_hover ;
+}
+
+.bg-night:hover{
+    background: $night_bg_hover;
 }
 
 .pos-relative{
@@ -74,12 +83,17 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
 
     
-    .short_underline{
+    .short-underline-day, .short-underline-night{
         width: 8px;
         border: 1px solid #110038;
         position: absolute;
         margin-top: 18px;
         margin-left: 1px;
+        opacity: 1;
+    }
+
+    .short-underline-night{
+        opacity: 0;
     }
 }
 
@@ -97,9 +111,12 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         width: 133px;
     }
 
-    &:hover > .btn{
-        outline: 1px dotted #110038;
-        outline-offset: -3px;
+    &:hover{
+        > .btn{
+            outline: 1px dotted #110038;
+            outline-offset: -3px;
+            background: inherit;
+        }
     }
 
     .drop-down-button{
@@ -199,22 +216,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
     &:hover{
         background: #E6BBE2;
-    }
-    
-}
-
-.same-hover-day{
-    border: $border;
-    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-    color: #110038;
-    background: #E6BBE2;
-}
-
-.same-hover-night{
-    background: #CE36DB;
-    border: $border;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    color: #FFFFFF;
+    }   
 }
 
 .btn-theme-night{
@@ -222,6 +224,9 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     border: $border;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
     color: #FFFFFF;
+    &:hover{
+        background: #CE36DB;
+    }
 }
 
 .search-bar{
