@@ -111,7 +111,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         width: 133px;
     }
 
-    &:hover{
+    &:hover, &:active{
         > .btn{
             outline: 1px dotted #110038;
             outline-offset: -3px;
@@ -216,7 +216,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
     &:hover{
         background: #E6BBE2;
-    }   
+    }
 }
 
 .btn-theme-night{
@@ -243,7 +243,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         width: 87%;
         height: 48px;
         color: #110038;
-        margin: 12px 8px 12px 15px;
+        margin: 12px 6px 12px 15px;
         padding-left: 16px;
         font-size: 16px;
         line-height: 22px;
@@ -253,15 +253,42 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         }
     }
 
-    .btn{
+    .search-btn{
         width: 102px;
         font-size: 16px;
-        color: #B4B4B4;
         letter-spacing: 0;
         line-height: 18px;
+        text-align: end;
+        padding-right: 14px;
+        &.none-mode{
+            background: #E6E6E6;
+            color: #B4B4B4;
+            border: 1px solid #808080;
+            box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+        }
+
+        &.day-mode{
+            @extend .btn-theme-day;
+        }
+
+        &.night-mode{
+            @extend .btn-theme-night;
+        }
+        
 
         img{
-            margin-top: 10px;
+            position: relative;
+            opacity: 0.5;
+            top: 2px;
+            left: -8px
+        }
+
+        &:hover{
+            outline: none;
+        }
+
+        &:active{
+            outline: 1px dotted #110038;;
         }
     }
 }
@@ -276,5 +303,8 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-
-
+.subsearch-box{
+    display: none;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}

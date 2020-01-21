@@ -84,7 +84,7 @@ function changeTheme(theme){
 
     //Icons
     var icons = document.getElementsByClassName('icon');
-    changeIcons(themeDay,icons); // ENproceso
+    changeIcons(themeDay,icons); // ENPROCESO
 
     //Links and A subline
     var links = document.getElementsByTagName('a');
@@ -148,6 +148,8 @@ function replaceClases(array, themeOld, themeNew){
     }
 }
 
+/// EVENT LISTENER
+
 document.getElementById('dropdown-buttons').addEventListener('click', function (event) {
     var status = document.getElementById('drop-down').style.display;
     if (status == 'none'){document.getElementById('drop-down').style.display="block"}
@@ -157,3 +159,23 @@ document.getElementById('dropdown-buttons').addEventListener('click', function (
 document.getElementById('dropdown-buttons').addEventListener('mouseleave', function (event) {
     document.getElementById('drop-down').style.display = "none";
 });
+
+document.addEventListener('input',function(event){
+    var btnSearch = document.getElementsByClassName('search-btn');
+    var inputText = document.getElementById('search-input').value;
+    if (!!inputText){
+        /// ARAMAR PARA SABER EL TEMA ACTUAL
+        btnSearch[0].classList.replace('none-mode','btn-theme-day');
+        document.getElementsByClassName('subsearch-box')[0].style.display = 'block';
+    } else{
+        /// ARAMAR PARA SABER EL TEMA ACTUAL
+        btnSearch[0].classList.replace('btn-theme-day','none-mode',);
+        document.getElementsByClassName('subsearch-box')[0].style.display = 'none';
+    }
+});
+
+document.addEventListener('focusout',function(event){
+    document.getElementsByClassName('subsearch-box')[0].style.display = 'none';
+    
+});
+

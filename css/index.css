@@ -83,7 +83,7 @@
 .btn-select > .btn:first-child {
   width: 133px;
 }
-.btn-select:hover > .btn {
+.btn-select:hover > .btn, .btn-select:active > .btn {
   outline: 1px dotted #110038;
   outline-offset: -3px;
   background: inherit;
@@ -168,23 +168,23 @@
   outline-offset: -3px;
 }
 
-.btn-theme-day {
+.btn-theme-day, .search-bar .search-btn.day-mode {
   background: #F7C9F3;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
 }
-.btn-theme-day:hover {
+.btn-theme-day:hover, .search-bar .search-btn.day-mode:hover {
   background: #E6BBE2;
 }
 
-.btn-theme-night {
+.btn-theme-night, .search-bar .search-btn.night-mode {
   background: #EE3EFE;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
 }
-.btn-theme-night:hover {
+.btn-theme-night:hover, .search-bar .search-btn.night-mode:hover {
   background: #CE36DB;
 }
 
@@ -200,7 +200,7 @@
   width: 87%;
   height: 48px;
   color: #110038;
-  margin: 12px 8px 12px 15px;
+  margin: 12px 6px 12px 15px;
   padding-left: 16px;
   font-size: 16px;
   line-height: 22px;
@@ -208,15 +208,31 @@
 .search-bar #search-input::placeholder {
   color: #B4B4B4;
 }
-.search-bar .btn {
+.search-bar .search-btn {
   width: 102px;
   font-size: 16px;
-  color: #B4B4B4;
   letter-spacing: 0;
   line-height: 18px;
+  text-align: end;
+  padding-right: 14px;
 }
-.search-bar .btn img {
-  margin-top: 10px;
+.search-bar .search-btn.none-mode {
+  background: #E6E6E6;
+  color: #B4B4B4;
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+.search-bar .search-btn img {
+  position: relative;
+  opacity: 0.5;
+  top: 2px;
+  left: -8px;
+}
+.search-bar .search-btn:hover {
+  outline: none;
+}
+.search-bar .search-btn:active {
+  outline: 1px dotted #110038;
 }
 
 .display-inline {
@@ -226,6 +242,12 @@
 .box-day {
   background: #E6E6E6;
   padding: 3px;
+  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.subsearch-box {
+  display: none;
+  background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
