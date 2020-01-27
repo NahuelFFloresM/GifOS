@@ -70,6 +70,7 @@
 }
 .nav-buttons .short-underline-night {
   opacity: 0;
+  border-color: #FFFFFF;
 }
 
 .hover-day:hover {
@@ -130,6 +131,7 @@
 }
 #drop-down .btn.btn-sailor-night2 {
   background: #2E32FB;
+  color: white;
   border: 1px solid rgba(51, 53, 143, 0.2);
   box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
@@ -245,10 +247,83 @@
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.subsearch-box {
+#suggestions-title, #tendencies-title {
+  background: #FFFAFE;
+  width: 100%;
+  pointer-events: none;
+  border: 1px solid #E6BBE2;
+  box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+  height: 32px;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-indent: 7px;
+  margin-bottom: 16px;
+}
+#suggestions-title::placeholder, #tendencies-title::placeholder {
+  color: #110038;
+}
+
+#tendencies-title {
+  margin-top: 68px;
+}
+
+#subsearch-box-container {
+  margin-bottom: 64px;
+}
+#subsearch-box-container .subsearch-box {
   display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  padding: 17px 120px 15px 15px;
+}
+#subsearch-box-container .subsearch-box .btn {
+  width: 100%;
+}
+
+#suggestions-container {
+  display: flex;
+  justify-content: space-between;
+}
+#suggestions-container .suggestion-item {
+  background: #E6E6E6;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 700;
+  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  width: 100%;
+  max-width: 288px;
+  max-height: 313px;
+  margin-right: 15px;
+  padding: 3px 4px;
+}
+#suggestions-container .suggestion-item header {
+  padding: 3px;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+#suggestions-container .suggestion-item header .close-icon {
+  position: absolute;
+  right: 6px;
+}
+#suggestions-container .suggestion-item .btn-more {
+  background: #4180F6;
+  border: 1px solid #4C2F99;
+  color: #FFFFFF;
+  width: 81px;
+  height: 34px;
+  position: absolute;
+  bottom: 19px;
+  left: 11px;
+  box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+}
+#suggestions-container:last-child {
+  margin-right: 0px;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -32,14 +32,37 @@
             <header class="color-theme1">Buscar</header>
             <div class="display-inline search-box">
                 <input type="text" id="search-input" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
-                <button class="btn search-btn none-mode"><img src="./assets/lupa.svg" alt="Search Logo">Buscar</button>
+                <button class="btn search-btn none-mode" id="search-action-btn"><img src="./assets/lupa.svg" alt="Search Logo" >Buscar</button>
             </div>
         </div>
-        <div class="subsearch-box">
-            <button class="btn" id="first-search-button"></button>
-            <button class="btn" id="second-search-button"></button>
-            <button class="btn" id="third-search-button"></button>
+        <div class="pos-relative" id="subsearch-box-container">
+            <div class="subsearch-box">
+                <button class="btn" id="first-search-button"></button>
+                <button class="btn" id="second-search-button"></button>
+                <button class="btn" id="third-search-button"></button>
+            </div>
         </div>
+        <input id="suggestions-title" type="text" id="search-input" placeholder="Hoy te sugerimos:">
+        <div id="suggestions-container">
+            <div class="suggestion-item pos-relative">
+                <header class="color-theme1">#HashTag <img src="./assets/close.svg" class="close-icon" alt="Close Window"></header>
+                <img src="" alt="..gif-alt">
+                <button class="btn btn-more">Ver más...</button>
+            </div>
+            <div class="suggestion-item">
+                <header>#HashTag <img src="./assets/close.svg" alt="Close Window"></header>
+                <img>
+            </div>
+            <div class="suggestion-item">
+                <header>#HashTag <img src="./assets/close.svg" alt="Close Window"></header>
+                <img>
+            </div>
+            <div class="suggestion-item">
+                <header>#HashTag <img src="./assets/close.svg" alt="Close Window"></header>
+                <img>
+            </div>
+        </div>
+        <input id="tendencies-title" type="text" id="search-input" placeholder="Tendencias:">
     </div>
     <script src="js/index.js"></script>
 </body>
