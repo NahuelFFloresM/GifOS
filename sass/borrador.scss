@@ -1,0 +1,24 @@
+#capture-btn{
+    display: inline-flex;
+    
+    .btn:first-child{
+        width: 36px;
+        height: 36px;
+    }
+    .btn:last-child{
+        margin-right: -1px;
+        color:black;
+    }
+    img{
+        padding: 7px;
+    }
+    .btn{
+        height: 36px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 18px;
+    }
+}
