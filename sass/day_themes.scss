@@ -1,0 +1,26 @@
+body{
+    &.theme-day{
+        background-color: #FFFFFF;
+    }
+}
+
+.top-bar{
+    &.theme-day{
+        background-image: $day_background;
+    }
+}
+
+.btn{
+    &.theme-day{
+    background: constants.$day_background;
+    border: constants.$border;
+    box-shadow: constants.$btn_day_box_shadow;
+    color: constants.$text_color_day;
+
+    &:hover{
+        background: constants.$btn_day_hover;
+    }
+}
+
+
+

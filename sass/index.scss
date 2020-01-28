@@ -1,18 +1,6 @@
 // Theme Day Button
-$day_background: #F7C9F3;
-$day_bg_hover: #E6BBE2;
-$night_bg_hover: #CE36DB;
-$border: 1px solid #110038;
-$text-color: #110038;
-$day_box_shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-// Theme Night Button
-$night_background: #EE3EFE;
-$night_box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
 
-// Box Themes
-$day_background_image:linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
-$night_background_image:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-$box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+@use "constants";
 
 * {
     margin: 0;
@@ -24,12 +12,19 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     letter-spacing: 0;
     font-weight: 400;
 }
+
+.top-bar{
+    height: 23px;
+    padding: 3px 0 4px 7px;
+    box-shadow: 0 1px 0 0 #110038;
+}
+
 .bg-day:hover{
-    background: $day_bg_hover ;
+    background: constants.$day_bg_hover ;
 }
 
 .bg-night:hover{
-    background: $night_bg_hover;
+    background: constants.$night_bg_hover;
 }
 
 .pos-relative{
@@ -130,7 +125,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
         position: absolute;
         padding: 10px;
         background: #E6E6E6;
-        box-shadow: $box;
+        box-shadow: constants.$box;
     }
 
     .drop-down-night{
@@ -183,18 +178,14 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .color-theme1{
-    background-image: $day_background_image ; 
+    background-image: constants.$day_background_image;
 }
 
 .color-theme2{
-    background-image: $night_background_image;
+    background-image: constants.$night_background_image;
 }
 
-.top-bar{
-    height: 23px;
-    padding: 3px 0 4px 7px;
-    box-shadow: 0 1px 0 0 #110038;
-}
+
 
 .container-centered{
     margin-left: 100px;
@@ -212,10 +203,10 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .btn-theme-day{
-    background: $day_background;
-    border: $border;
+    background: constants.$day_background;
+    border: constants.$border;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-    color: #110038;
+    color: constants.$text_color_day;
 
     &:hover{
         background: #E6BBE2;
@@ -223,8 +214,8 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .btn-theme-night{
-    background: $night_background;
-    border: $border;
+    background: constants.$night_background;
+    border: constants.$border;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
     color: #FFFFFF;
     &:hover{
@@ -319,7 +310,7 @@ $box: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     letter-spacing: 0;
     text-indent: 7px;
     &::placeholder{
-        color: $text-color;
+        color: constants.$text-color;
     }
     margin-bottom: 16px;
 }
