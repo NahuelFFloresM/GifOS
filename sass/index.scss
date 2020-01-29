@@ -1,5 +1,3 @@
-// Theme Day Button
-
 @use "constants";
 
 * {
@@ -17,14 +15,6 @@
     height: 23px;
     padding: 3px 0 4px 7px;
     box-shadow: 0 1px 0 0 #110038;
-}
-
-.bg-day:hover{
-    background: constants.$day_bg_hover ;
-}
-
-.bg-night:hover{
-    background: constants.$night_bg_hover;
 }
 
 .pos-relative{
@@ -70,7 +60,7 @@
             position: absolute;
             top: 20%;
             bottom: 20%;
-            color: #110038;
+            color: constants.$text-color;
     
             &:active{
                 opacity: 50%;
@@ -81,7 +71,7 @@
     
     .short-underline-day, .short-underline-night{
         width: 8px;
-        border: 1px solid #110038;
+        border: constants.$common_border;
         position: absolute;
         margin-top: 18px;
         margin-left: 1px;
@@ -92,10 +82,6 @@
         opacity: 0;
         border-color: #FFFFFF;
     }
-}
-
-.hover-day:hover{
-    border: 1px dotted #110038;
 }
 
 .hover-night:hover{
@@ -110,7 +96,7 @@
 
     &:hover, &:active{
         > .btn{
-            outline: 1px dotted #110038;
+            outline: constants.$dotted_border;
             outline-offset: -3px;
             background: inherit;
         }
@@ -145,20 +131,7 @@
         margin-bottom: 10px;
     }
 
-
-    &.btn-sailor-day{
-        background: #FFF4FD;
-        border: 1px solid #CCA6C9;
-        box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
-    }
-
-    &.btn-sailor-day2{
-        background: #CCCCCC;
-        border: 1px solid #808080;
-        box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    }
-
-    &.btn-sailor-night{
+    &.theme-night{
         background: #F0F0F0;
         border: 1px solid #808080;
         box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
@@ -175,10 +148,6 @@
 #web-logo{
     position: relative;
     left: -9px;
-}
-
-.color-theme1{
-    background-image: constants.$day_background_image;
 }
 
 .color-theme2{
@@ -204,7 +173,7 @@
 
 .btn-theme-day{
     background: constants.$day_background;
-    border: constants.$border;
+    border: constants.$common_border;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
     color: constants.$text_color_day;
 
@@ -215,7 +184,7 @@
 
 .btn-theme-night{
     background: constants.$night_background;
-    border: constants.$border;
+    border: constants.$common_border;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
     color: #FFFFFF;
     &:hover{

@@ -1,3 +1,5 @@
+@use "constants";
+
 body{
     &.theme-day{
         background-color: #FFFFFF;
@@ -6,21 +8,51 @@ body{
 
 .top-bar{
     &.theme-day{
-        background-image: $day_background;
+        background-image: constants.$day_gradient;
     }
 }
 
 .btn{
     &.theme-day{
-    background: constants.$day_background;
-    border: constants.$border;
-    box-shadow: constants.$btn_day_box_shadow;
-    color: constants.$text_color_day;
+        background: constants.$day_background;
+        border: constants.$common_border;
+        box-shadow: constants.$btn_day_box_shadow;
+        color: constants.$text_color_day;
 
-    &:hover{
-        background: constants.$btn_day_hover;
+        &:hover{
+            background: constants.$btn_day_hover;
+        }
     }
 }
 
+.hover-day:hover{
+    border: 1px dotted #110038;
+}
 
+#drop-down {
 
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+
+    &.btn {
+
+        &:first-child{
+            margin-bottom: 10px;
+        }
+        
+        width: 150px;
+        text-align: left;
+        text-indent: 16px;
+        .theme-day{
+            background: #F0F0F0;
+            border: 1px solid #808080;
+            box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+
+            &:hover{
+                background: #FFF4FD;
+                border: 1px solid #CCA6C9;
+                box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+            }
+        }
+    }
+}

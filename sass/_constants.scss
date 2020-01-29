@@ -19,7 +19,8 @@ $day_gradient:linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 $night_gradient:linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 
 // BUTTON
-$btn_border: 1px solid #110038;
+$common_border: 1px solid #110038;
+$dotted_border: 1px dotted #110038;
 $btn_day_box_shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 $btn_day_hover: #E6BBE2;
 $text_color_day: #110038;
