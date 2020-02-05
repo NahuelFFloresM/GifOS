@@ -24,23 +24,36 @@ body.theme-day {
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
-#drop-down.btn {
+#drop-down .btn {
   width: 150px;
   text-align: left;
   text-indent: 16px;
-}
-#drop-down.btn:first-child {
-  margin-bottom: 10px;
-}
-#drop-down.btn .theme-day {
   background: #F0F0F0;
   border: 1px solid #808080;
   box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
 }
-#drop-down.btn .theme-day:hover {
-  background: #FFF4FD;
+#drop-down .btn:first-child {
+  margin-bottom: 10px;
+}
+#drop-down .btn:hover {
+  background: #F7C9F3;
   border: 1px solid #CCA6C9;
   box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.bg-day {
+  background: #F7C9F3;
+}
+.bg-day:hover {
+  background: #E6BBE2;
+}
+
+.suggestion-item .top-bar, .search-bar .top-bar {
+  box-shadow: unset;
+}
+
+.suggestion-item {
+  position: relative;
 }
 
 /*# sourceMappingURL=day_themes.css.map */
