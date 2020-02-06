@@ -47,7 +47,14 @@ function changeTheme(theme){
 async function getSearchResults(search,limit) {
 
     var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
-    xhr.done(function(data) { console.log("success got data", data); });
+    xhr.then(function(data) {
+        console.log(data.data[0].url);
+        var item = document.createElement('div');
+        item.innerHTML ='<header class="top-bar theme-day color-theme1">#HashTag <img src="./assets/close.svg" class="close-icon" alt="Close Window"></header><img src='+data.data[0].url+' alt="..gif-alt"><button class="btn btn-more">Ver más...</button>';
+        item.className += 'suggestion-item pos-relative';
+        document.getElementById('suggestions-container').appendChild(item);
+        return data; 
+    });
 
     // const found = await fetch('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit)
     //     .then(response => {
@@ -131,6 +138,7 @@ document.getElementById('subsearch-box-container').addEventListener('focusout',f
 
 document.getElementById('search-action-btn').addEventListener('click', function(event){
     var searchText = document.getElementById('search-input').value;
+    document.getElementById('subsearch-box').style.display = 'none';
     var response = getSearchResults(searchText,4);
     console.log(response);
 });
