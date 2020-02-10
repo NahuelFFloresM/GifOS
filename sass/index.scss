@@ -307,7 +307,7 @@
 
 #suggestions-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     .suggestion-item {
         background: #E6E6E6;
         font-family: 'Chakra Petch', sans-serif;
@@ -316,7 +316,6 @@
         width: 100%;
         max-width: 288px;
         max-height: 313px;
-        margin-right: 15px;
         padding: 3px 4px;        
         header{
             padding: 3px;
@@ -341,6 +340,12 @@
             bottom: 19px;
             left: 11px;
             box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+        }
+
+        .img-item{
+            width: 100%;
+            height: 280px;
+            padding-top: 2px;
         }
 
 

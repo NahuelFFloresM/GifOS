@@ -1,6 +1,12 @@
 // CONFIGURATION TO GIF API
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 var globalTheme = true;
+// PROMESAS
+let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
+    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
+    xhr.then(response => resolve(response))
+    .catch(error => reject(error));
+});
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
@@ -43,30 +49,37 @@ function changeTheme(theme){
     }
 }
 
+
+
 /// FUNCTION TO GET FROM DB- MOVE TO ANOTHER JSFILE
-async function getSearchResults(search,limit) {
-
-    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
-    xhr.then(function(data) {
-        console.log(data.data[0].url);
-        var item = document.createElement('div');
-        item.innerHTML ='<header class="top-bar theme-day color-theme1">#HashTag <img src="./assets/close.svg" class="close-icon" alt="Close Window"></header><img src='+data.data[0].url+' alt="..gif-alt"><button class="btn btn-more">Ver más...</button>';
-        item.className += 'suggestion-item pos-relative';
-        document.getElementById('suggestions-container').appendChild(item);
-        return data; 
-    });
-
-    // const found = await fetch('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit)
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         return data;
-    //     })
-    //     .catch(error => {
-    //         return error;
-    //     });
-    // return found;
+function getSearchResults(search,limit) {
+    getLimitGifs(search,limit).then( response => {
+        response.data.forEach(element => {
+            var item = document.createElement('div');
+            item.className += 'suggestion-item pos-relative';
+            var header = document.createElement('header');
+            header.className = 'top-bar theme-day';
+            header.innerHTML ='#HashTag';
+            var closeIcon = document.createElement('img');
+            closeIcon.className = 'close-icon';
+            closeIcon.src = "./assets/close.svg";
+            closeIcon.alt = "Close Window";
+            header.appendChild(closeIcon);
+            var img = document.createElement('img');
+            img.className = 'img-item';
+            img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
+            img.alt = "..gif-alt";
+            var btn = document.createElement('button');
+            btn.className = "btn btn-more";
+            btn.innerHTML = "Ver mas...";
+            item.appendChild(header);
+            item.appendChild(img);
+            item.appendChild(btn);
+            document.getElementById('suggestions-container').appendChild(item);
+        });        
+    }).catch(error => {
+        console.log(error);
+    })
 }
 
 function getRandomResults(search) { 
@@ -139,8 +152,7 @@ document.getElementById('subsearch-box-container').addEventListener('focusout',f
 document.getElementById('search-action-btn').addEventListener('click', function(event){
     var searchText = document.getElementById('search-input').value;
     document.getElementById('subsearch-box').style.display = 'none';
-    var response = getSearchResults(searchText,4);
-    console.log(response);
+    getSearchResults(searchText,4);
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
