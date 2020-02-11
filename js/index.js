@@ -8,6 +8,12 @@ let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
     .catch(error => reject(error));
 });
 
+let getRandomGifs = () => new Promise((resolve,reject) =>{
+    var xhr = $.get('https://api.giphy.com/v1/gifs/random?api_key='+ apiKey);
+    xhr.then(response => resolve(response))
+    .catch(error => reject(error));
+});
+
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
 function changeTheme(theme){
@@ -49,8 +55,6 @@ function changeTheme(theme){
     }
 }
 
-
-
 /// FUNCTION TO GET FROM DB- MOVE TO ANOTHER JSFILE
 function getSearchResults(search,limit) {
     getLimitGifs(search,limit).then( response => {
@@ -82,18 +86,33 @@ function getSearchResults(search,limit) {
     })
 }
 
-function getRandomResults(search) { 
-    const found = fetch('https://api.giphy.com/v1/gifs/random?api_key=' + apiKey + '&tag=' + search)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            return data;
-        })
-        .catch(error => {
-            return error;
-        });
-    return found;
+// GET RANDOM RESULTS OF GYPHY
+function getRandomResults() { 
+    getRandomGifs().then(response => {
+        var item = document.createElement('div');
+        item.className += 'suggestion-item pos-relative';
+        var header = document.createElement('header');
+        header.className = 'top-bar theme-day';
+        header.innerHTML ='#HashTag';
+        var closeIcon = document.createElement('img');
+        closeIcon.className = 'close-icon';
+        closeIcon.src = "./assets/close.svg";
+        closeIcon.alt = "Close Window";
+        header.appendChild(closeIcon);
+        var img = document.createElement('img');
+        img.className = 'img-item';
+        img.src = 'https://media.giphy.com/media/'+ response.data.id +'/giphy.gif';
+        img.alt = "..gif-alt";
+        var btn = document.createElement('button');
+        btn.className = "btn btn-more";
+        btn.innerHTML = "Ver mas...";
+        item.appendChild(header);
+        item.appendChild(img);
+        item.appendChild(btn);
+        document.getElementById('suggestions-container').appendChild(item);
+    }).catch(error => {
+        console.log(error);
+    })
 } 
 
 //HELPER FUNCTIONS
@@ -156,6 +175,8 @@ document.getElementById('search-action-btn').addEventListener('click', function(
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    var item = "<div class='suggestion-item pos-relative'><header class='color-theme1'>#HashTag <img src='./assets/close.svg' class='close-icon' alt='Close Window'></header><img src='' alt='..gif-alt'><button class='btn btn-more'>Ver más...</button></div>";
     console.log("DOM fully loaded and parsed");
+    for (var i = 0; i < 4; i++){
+        getRandomResults();
+    }
 });
