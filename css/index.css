@@ -221,9 +221,9 @@
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-#suggestions-title, #tendencies-title {
-  background: #FFFAFE;
+#suggestions-title, #trends-title {
   width: 100%;
+  margin-top: 64px;
   pointer-events: none;
   border: 1px solid #E6BBE2;
   box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
@@ -235,17 +235,10 @@
   text-indent: 7px;
   margin-bottom: 16px;
 }
-#suggestions-title::placeholder, #tendencies-title::placeholder {
+#suggestions-title::placeholder, #trends-title::placeholder {
   color: #110038;
 }
 
-#tendencies-title {
-  margin-top: 68px;
-}
-
-#subsearch-box-container {
-  margin-bottom: 64px;
-}
 #subsearch-box-container .subsearch-box {
   display: none;
   position: absolute;
@@ -302,6 +295,22 @@
 }
 #suggestions-container:last-child {
   margin-right: 0px;
+}
+
+.trendings-container {
+  display: inline-flex;
+}
+.trendings-container .trend-item {
+  position: relative;
+}
+.trendings-container .hashtag {
+  position: absolute;
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  bottom: 0;
+  opacity: 0;
+}
+.trendings-container .hashtag:hover {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
