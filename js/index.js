@@ -9,7 +9,7 @@ let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
 });
 
 let getTrendsGifs = (limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit);
+    var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit);
     xhr.then(response => resolve(response))
     .catch(error => reject(error));
 });
@@ -68,7 +68,7 @@ function getSearchResults(search,limit) {
             var item = document.createElement('div');
             item.className += 'suggestion-item pos-relative';
             var header = document.createElement('header');
-            header.className = 'top-bar theme-day';
+            header.className = 'text-bar top-bar theme-day';
             header.innerHTML ='#HashTag';
             var closeIcon = document.createElement('img');
             closeIcon.className = 'close-icon';
@@ -98,7 +98,7 @@ function getRandomResults() {
         var item = document.createElement('div');
         item.className += 'suggestion-item pos-relative';
         var header = document.createElement('header');
-        header.className = 'top-bar theme-day';
+        header.className = 'text-bar top-bar theme-day';
         header.innerHTML ='#HashTag';
         var closeIcon = document.createElement('img');
         closeIcon.className = 'close-icon';
@@ -122,31 +122,24 @@ function getRandomResults() {
 }
 
 function getTrendingsResults(){
-    // getRandomGifs().then(response => {
-    //     var item = document.createElement('div');
-    //     item.className += 'suggestion-item pos-relative';
-    //     var header = document.createElement('header');
-    //     header.className = 'top-bar theme-day';
-    //     header.innerHTML ='#HashTag';
-    //     var closeIcon = document.createElement('img');
-    //     closeIcon.className = 'close-icon';
-    //     closeIcon.src = "./assets/close.svg";
-    //     closeIcon.alt = "Close Window";
-    //     header.appendChild(closeIcon);
-    //     var img = document.createElement('img');
-    //     img.className = 'img-item';
-    //     img.src = 'https://media.giphy.com/media/'+ response.data.id +'/giphy.gif';
-    //     img.alt = "..gif-alt";
-    //     var btn = document.createElement('button');
-    //     btn.className = "btn btn-more";
-    //     btn.innerHTML = "Ver mas...";
-    //     item.appendChild(header);
-    //     item.appendChild(img);
-    //     item.appendChild(btn);
-    //     document.getElementById('suggestions-container').appendChild(item);
-    // }).catch(error => {
-    //     console.log(error);
-    // })
+    getTrendsGifs(9).then(response => {
+        response.data.forEach( element => {
+            var item = document.createElement('div');
+            item.className += 'trend-item';
+            var img = document.createElement('img');
+            img.className = 'img-item';
+            img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
+            img.alt = "..gif-alt";
+            var hasht = document.createElement('div');
+            hasht.innerHTML = "#Hashzag";
+            hasht.className +='text-bar hashtag';
+            item.appendChild(img);
+            item.appendChild(hasht);
+            document.getElementById('trendings-container').appendChild(item);
+        })        
+    }).catch(error => {
+        console.log(error);
+    })
 }
 
 //HELPER FUNCTIONS
@@ -213,7 +206,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (var i = 0; i < 4; i++){
         getRandomResults();
     }
-    for (var i = 0; i < 12; i++){
-        getTrendingsResults();
-    }
+    getTrendingsResults();
 });
