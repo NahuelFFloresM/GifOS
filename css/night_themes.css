@@ -1,0 +1,59 @@
+body {
+  background-color: #110038;
+}
+
+.top-bar.theme-night {
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.btn.theme-night {
+  background: #EE3EFE;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
+}
+.btn.theme-night:hover {
+  background: #A72CB3;
+}
+
+.theme-night .hover-day:hover {
+  border: 1px dotted #FFFFFF;
+}
+
+#drop-down {
+  background: #B4B4B4;
+  box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+#drop-down .btn {
+  width: 150px;
+  text-align: left;
+  text-indent: 16px;
+  background: #CCCCCC;
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+#drop-down .btn:first-child {
+  margin-bottom: 10px;
+}
+#drop-down .btn:hover {
+  background: #EE3EFE;
+  border: 1px solid #CCA6C9;
+  box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.bg-day {
+  background: #F7C9F3;
+}
+.bg-day:hover {
+  background: #E6BBE2;
+}
+
+.suggestion-item .top-bar, .search-bar .top-bar {
+  box-shadow: unset;
+}
+
+.suggestion-item {
+  position: relative;
+}
+
+/*# sourceMappingURL=night_themes.css.map */

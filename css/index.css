@@ -263,6 +263,7 @@
 #suggestions-container {
   display: flex;
   justify-content: space-evenly;
+  margin: -8px;
 }
 #suggestions-container .suggestion-item {
   background: #E6E6E6;
@@ -273,6 +274,7 @@
   max-width: 288px;
   max-height: 313px;
   padding: 3px 4px;
+  margin: 0px 8px;
 }
 #suggestions-container .suggestion-item .text-bar .close-icon {
   position: absolute;
@@ -294,40 +296,48 @@
   height: 280px;
   padding-top: 2px;
 }
-#suggestions-container:last-child {
-  margin-right: 0px;
+#suggestions-container .suggestion-item:hover .img-item, #suggestions-container .suggestion-item:hover .btn-more {
+  outline: 1px dotted #110038;
+  outline-offset: -3px;
 }
 
 #trendings-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin: 0 -8px;
 }
 #trendings-container .trend-item {
   position: relative;
+  max-width: 288px;
+  max-height: 298px;
+  margin: 8px;
+  flex: 1 0 21%;
 }
 #trendings-container .trend-item:hover {
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-  overflow: hidden;
   padding: 2px;
-  margin: -2px;
   outline: 1px dotted #110038;
   outline-offset: -3px;
 }
 #trendings-container .hashtag {
   position: absolute;
   background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
-  bottom: 4px;
+  opacity: 0;
+  bottom: 1px;
+  right: 3px;
+  left: 3px;
+  margin-bottom: 2px;
+}
+#trendings-container img {
   width: 100%;
-  display: none;
+  height: 100%;
 }
 #trendings-container img:hover {
-  padding: 4px;
-  margin: -2px;
+  padding: 1px;
 }
-#trendings-container img:hover + .hashtag {
-  display: block;
+#trendings-container img:hover ~ .hashtag {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=index.css.map */

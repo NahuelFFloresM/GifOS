@@ -123,6 +123,7 @@ function getRandomResults() {
 
 function getTrendingsResults(){
     getTrendsGifs(9).then(response => {
+        console.log(response.data);
         response.data.forEach( element => {
             var item = document.createElement('div');
             item.className += 'trend-item';
@@ -131,7 +132,7 @@ function getTrendingsResults(){
             img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
             img.alt = "..gif-alt";
             var hasht = document.createElement('div');
-            hasht.innerHTML = "#Hashzag";
+            hasht.innerHTML = "#Hashtag";
             hasht.className +='text-bar hashtag';
             item.appendChild(img);
             item.appendChild(hasht);

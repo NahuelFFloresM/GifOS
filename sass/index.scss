@@ -113,13 +113,6 @@
         background: #E6E6E6;
         box-shadow: constants.$box;
     }
-
-    .drop-down-night{
-        position: absolute;
-        padding: 10px;
-        background: #B4B4B4;
-        box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
-    }
 }
 
 #drop-down .btn{
@@ -310,6 +303,7 @@
 #suggestions-container {
     display: flex;
     justify-content: space-evenly;
+    margin: -8px;
     .suggestion-item {
         background: #E6E6E6;
         font-family: 'Chakra Petch', sans-serif;
@@ -318,7 +312,8 @@
         width: 100%;
         max-width: 288px;
         max-height: 313px;
-        padding: 3px 4px;        
+        padding: 3px 4px;    
+        margin: 0px 8px;    
         .text-bar{    
             .close-icon{
                 position: absolute;
@@ -344,26 +339,29 @@
             padding-top: 2px;
         }
 
-
-    }
-
-    &:last-child{
-        margin-right: 0px;
+        &:hover{
+            .img-item, .btn-more{
+                outline: constants.$dotted_border;
+                outline-offset: -3px;
+            }
+        }
     }
 }
 
 #trendings-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin: 0 -8px;
     .trend-item{
         position: relative;
+        max-width: 288px;
+        max-height: 298px;
+        margin: 8px;
+        flex: 1 0 21%;
         &:hover{
             background: #E6E6E6;
             box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-            overflow: hidden;
             padding: 2px;
-            margin: -2px;
             outline: constants.$dotted_border;
             outline-offset: -3px;
         }
@@ -372,17 +370,21 @@
     .hashtag{
         position: absolute;
         background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
-        bottom: 4px;
-        width: 100%;
-        display: none;
+        opacity: 0;
+        bottom: 1px;
+        right: 3px;
+        left: 3px;
+        margin-bottom: 2px;
     }
     img{
+        width: 100%;
+        height: 100%;
         &:hover {
-            padding: 4px;
-            margin: -2px;
+            padding: 1px;
         }
-        &:hover + .hashtag{
-            display: block;
+
+        &:hover ~ .hashtag{
+            opacity: 1;
         }
     }
 }
