@@ -20,11 +20,11 @@ body.theme-day {
   border: 1px dotted #110038;
 }
 
-#drop-down {
+.drop-down .theme-day {
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
-#drop-down .btn {
+.drop-down .theme-day .btn {
   width: 150px;
   text-align: left;
   text-indent: 16px;
@@ -32,10 +32,10 @@ body.theme-day {
   border: 1px solid #808080;
   box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
 }
-#drop-down .btn:first-child {
+.drop-down .theme-day .btn:first-child {
   margin-bottom: 10px;
 }
-#drop-down .btn:hover {
+.drop-down .theme-day .btn:hover {
   background: #F7C9F3;
   border: 1px solid #CCA6C9;
   box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;

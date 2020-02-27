@@ -20,32 +20,32 @@ body {
   border: 1px dotted #FFFFFF;
 }
 
-#drop-down {
+.drop-down.theme-night {
   background: #B4B4B4;
   box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
-#drop-down .btn {
+.drop-down.theme-night .btn {
   width: 150px;
   text-align: left;
   text-indent: 16px;
-  background: #CCCCCC;
+  background: #B4B4B4;
   border: 1px solid #808080;
-  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
-#drop-down .btn:first-child {
+.drop-down.theme-night .btn:first-child {
   margin-bottom: 10px;
 }
-#drop-down .btn:hover {
-  background: #EE3EFE;
-  border: 1px solid #CCA6C9;
+.drop-down.theme-night .btn:hover {
+  background: #2E32FB;
+  border: 1px solid rgba(51, 53, 143, 0.2);
   box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
 
-.bg-day {
-  background: #F7C9F3;
+.bg-night {
+  background: #EE3EFE;
 }
-.bg-day:hover {
-  background: #E6BBE2;
+.bg-night:hover {
+  background: #A72CB3;
 }
 
 .suggestion-item .top-bar, .search-bar .top-bar {

@@ -90,34 +90,16 @@
 .btn-select .drop-down {
   position: absolute;
   padding: 10px;
-  background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
-.btn-select .drop-down-night {
-  position: absolute;
-  padding: 10px;
-  background: #B4B4B4;
-  box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
-}
 
-#drop-down .btn {
+.drop-down .btn {
   width: 150px;
   text-align: left;
   text-indent: 16px;
 }
-#drop-down .btn:first-child {
+.drop-down .btn:first-child {
   margin-bottom: 10px;
-}
-#drop-down .btn.theme-night {
-  background: #F0F0F0;
-  border: 1px solid #808080;
-  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-}
-#drop-down .btn.btn-sailor-night2 {
-  background: #2E32FB;
-  color: white;
-  border: 1px solid rgba(51, 53, 143, 0.2);
-  box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
 
 #web-logo {

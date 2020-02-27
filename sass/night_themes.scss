@@ -28,35 +28,37 @@ body{
     border: 1px dotted #FFFFFF;
 }
 
-#drop-down {
-    background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;    
+.drop-down{ 
+    &.theme-night{
+        background: #B4B4B4;
+        box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;    
 
-    .btn {        
-        width: 150px;
-        text-align: left;
-        text-indent: 16px;
-        background: #CCCCCC;
-        border: 1px solid #808080;
-        box-shadow:  inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+        .btn{        
+            width: 150px;
+            text-align: left;
+            text-indent: 16px;
+            background: #B4B4B4;
+            border: 1px solid #808080;
+            box-shadow:  inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 
-        &:first-child{
-            margin-bottom: 10px;
-        }
-
-        &:hover{
-            background: constants.$night_background;
-            border: 1px solid #CCA6C9;
-            box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+            &:first-child{
+                margin-bottom: 10px;
+            }
+            
+            &:hover{
+                background: #2E32FB;
+                border: 1px solid rgba(51,53,143,0.20);
+                box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+            }
         }
     }
 }
 
-.bg-day{
-    background: #F7C9F3;
+.bg-night{
+    background: constants.$night_background;
 
     &:hover{
-        background: #E6BBE2;
+        background: constants.$btn_night_hover;
     }
 }
 

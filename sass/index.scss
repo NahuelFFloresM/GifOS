@@ -110,31 +110,17 @@
     .drop-down{
         position: absolute;
         padding: 10px;
-        background: #E6E6E6;
         box-shadow: constants.$box;
     }
 }
 
-#drop-down .btn{
+.drop-down .btn{
     width: 150px;
     text-align: left;
     text-indent: 16px;
 
     &:first-child{
         margin-bottom: 10px;
-    }
-
-    &.theme-night{
-        background: #F0F0F0;
-        border: 1px solid #808080;
-        box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    }
-
-    &.btn-sailor-night2{
-        background: #2E32FB;
-        color:white;
-        border: 1px solid rgba(51,53,143,0.20);
-        box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
     }
 }
 
