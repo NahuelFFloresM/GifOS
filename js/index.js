@@ -64,29 +64,22 @@ function changeTheme(theme){
 /// FUNCTION TO GET FROM DB- MOVE TO ANOTHER JSFILE
 function getSearchResults(search,limit) {
     getLimitGifs(search,limit).then( response => {
+        document.getElementById('suggestions-title').innerHTML = "Ejemplo de búsqueda: "+search;
+        document.getElementById('trendings-container').innerHTML = "";
         response.data.forEach(element => {
             var item = document.createElement('div');
-            item.className += 'suggestion-item pos-relative';
-            var header = document.createElement('header');
-            header.className = 'text-bar top-bar theme-day';
-            header.innerHTML ='#HashTag';
-            var closeIcon = document.createElement('img');
-            closeIcon.className = 'close-icon';
-            closeIcon.src = "./assets/close.svg";
-            closeIcon.alt = "Close Window";
-            header.appendChild(closeIcon);
+            item.className += 'trend-item';
             var img = document.createElement('img');
             img.className = 'img-item';
             img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
             img.alt = "..gif-alt";
-            var btn = document.createElement('button');
-            btn.className = "btn btn-more";
-            btn.innerHTML = "Ver mas...";
-            item.appendChild(header);
+            var hasht = document.createElement('div');
+            hasht.innerHTML = "#Hashtag";
+            hasht.className ='text-bar hashtag';
             item.appendChild(img);
-            item.appendChild(btn);
-            document.getElementById('suggestions-container').appendChild(item);
-        });        
+            item.appendChild(hasht);
+            document.getElementById('trendings-container').appendChild(item);
+        });
     }).catch(error => {
         console.log(error);
     })
@@ -123,7 +116,6 @@ function getRandomResults() {
 
 function getTrendingsResults(){
     getTrendsGifs(9).then(response => {
-        console.log(response.data);
         response.data.forEach( element => {
             var item = document.createElement('div');
             item.className += 'trend-item';
@@ -199,13 +191,28 @@ document.getElementById('subsearch-box-container').addEventListener('focusout',f
 document.getElementById('search-action-btn').addEventListener('click', function(event){
     var searchText = document.getElementById('search-input').value;
     document.getElementById('subsearch-box').style.display = 'none';
-    getSearchResults(searchText,4);
+    getSearchResults(searchText,12);
+});
+
+document.getElementById('end-trendings').addEventListener('scroll',function(event){
+    
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
+    if (checkUserID()){
+        genereateID();
+    } else{
+
+    }
     for (var i = 0; i < 4; i++){
         getRandomResults();
     }
     getTrendingsResults();
 });
+
+function checkUserID(){
+    let id = "";
+    
+    return id;
+}
