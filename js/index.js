@@ -1,6 +1,9 @@
 // CONFIGURATION TO GIF API
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
+let UserAppId = "";
 var globalTheme = true;
+var scrollCount = 0;
+
 // PROMESAS
 let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
     var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
@@ -8,8 +11,8 @@ let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
     .catch(error => reject(error));
 });
 
-let getTrendsGifs = (limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit);
+let getTrendsGifs = (limit,offset) => new Promise((resolve,reject) =>{
+    var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit + '&offset=' + offset);
     xhr.then(response => resolve(response))
     .catch(error => reject(error));
 });
@@ -114,8 +117,9 @@ function getRandomResults() {
     })
 }
 
-function getTrendingsResults(){
-    getTrendsGifs(9).then(response => {
+function getTrendingsResults(limit,offset){
+    scrollCount +=limit;
+    getTrendsGifs(limit,offset).then(response => {
         response.data.forEach( element => {
             var item = document.createElement('div');
             item.className += 'trend-item';
@@ -194,25 +198,43 @@ document.getElementById('search-action-btn').addEventListener('click', function(
     getSearchResults(searchText,12);
 });
 
-document.getElementById('end-trendings').addEventListener('scroll',function(event){
-    
+window.addEventListener('scroll',function(event){
+    let position = document.getElementById('end-trendings');
+    let screen = window.screen.height+window.pageYOffset;
+    if( position.offsetTop < screen){
+        console.log(scrollCount);
+        getTrendingsResults(9,scrollCount);
+    }
+    // console.log(window.screen.height+window.pageYOffset);
+    // console.log(position.offsetTop);
 });
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-    if (checkUserID()){
-        genereateID();
-    } else{
+    scrollCount = 0;
 
+    if (checkUserNew()){
+        UserAppId = generateID();
+    } else{
+        UserAppId = localStorage.getItem('giphyUserId');
     }
     for (var i = 0; i < 4; i++){
         getRandomResults();
     }
-    getTrendingsResults();
+    getTrendingsResults(9,0);
 });
 
-function checkUserID(){
-    let id = "";
-    
-    return id;
+function generateID(){
+    var xhr = $.get('https://api.giphy.com/v1/randomid?api_key=' + apiKey);
+    xhr.then(response => {
+            localStorage.setItem('giphyUserId',response["random_id"]);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+function checkUserNew(){
+    return !localStorage.getItem('giphyUserId') ? true:false;
 }
