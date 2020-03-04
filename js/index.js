@@ -1,24 +1,6 @@
 // CONFIGURATION TO GIF API
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 var globalTheme = true;
-// PROMESAS
-let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
-
-let getTrendsGifs = (limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
-
-let getRandomGifs = () => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/random?api_key='+ apiKey);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
@@ -213,6 +195,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function checkUserID(){
     let id = "";
-    
+    localStorage.getItem('giphyUser');
     return id;
 }
