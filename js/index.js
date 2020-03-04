@@ -1,6 +1,7 @@
 // CONFIGURATION TO GIF API
-const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
+let apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 let UserAppId = "";
+let scrollCount = 0;
 var globalTheme = true;
 
 ///GENERAL FUNCTIONS
@@ -98,8 +99,9 @@ function getRandomResults() {
 }
 
 function getTrendingsResults(limit,offset){
-    scrollCount +=limit;
-    getTrendsGifs(limit,offset).then(response => {
+    scrollCount +=offset;
+    getTrendsGifs(limit,scrollCount).then(response => {
+        console.log(response);
         response.data.forEach( element => {
             var item = document.createElement('div');
             item.className += 'trend-item';
@@ -182,19 +184,14 @@ window.addEventListener('scroll',function(event){
     let position = document.getElementById('end-trendings');
     let screen = window.screen.height+window.pageYOffset;
     if( position.offsetTop < screen){
-        console.log(scrollCount);
-        getTrendingsResults(9,scrollCount);
+        getTrendingsResults(12,scrollCount);
     }
-    // console.log(window.screen.height+window.pageYOffset);
-    // console.log(position.offsetTop);
 });
-
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-    scrollCount = 0;
-
-    if (checkUserNew()){
+    scrollCount = 9;
+    if (!userNew()){
         UserAppId = generateID();
     } else{
         UserAppId = localStorage.getItem('giphyUserId');
@@ -202,19 +199,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (var i = 0; i < 4; i++){
         getRandomResults();
     }
-    getTrendingsResults(9,0);
+    getTrendingsResults(12,0);
 });
 
-function generateID(){
-    var xhr = $.get('https://api.giphy.com/v1/randomid?api_key=' + apiKey);
-    xhr.then(response => {
-            localStorage.setItem('giphyUserId',response["random_id"]);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
 
-function checkUserNew(){
-    return !localStorage.getItem('giphyUserId') ? true:false;
-}
