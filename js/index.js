@@ -2,29 +2,6 @@
 const apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 let UserAppId = "";
 var globalTheme = true;
-<<<<<<< HEAD
-=======
-var scrollCount = 0;
-
-// PROMESAS
-let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
-
-let getTrendsGifs = (limit,offset) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit + '&offset=' + offset);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
-
-let getRandomGifs = () => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/random?api_key='+ apiKey);
-    xhr.then(response => resolve(response))
-    .catch(error => reject(error));
-});
->>>>>>> 18d11e28f9c2f2eb3faf49495a94c72bdb891329
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
@@ -228,12 +205,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     getTrendingsResults(9,0);
 });
 
-<<<<<<< HEAD
-function checkUserID(){
-    let id = "";
-    localStorage.getItem('giphyUser');
-    return id;
-=======
 function generateID(){
     var xhr = $.get('https://api.giphy.com/v1/randomid?api_key=' + apiKey);
     xhr.then(response => {
@@ -246,5 +217,4 @@ function generateID(){
 
 function checkUserNew(){
     return !localStorage.getItem('giphyUserId') ? true:false;
->>>>>>> 18d11e28f9c2f2eb3faf49495a94c72bdb891329
 }
