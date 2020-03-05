@@ -329,6 +329,26 @@
 .new-gif-window {
   margin: 75px 25% 153px 25%;
   height: 384px;
+  padding: 3px;
+  background: #E6E6E6;
+  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+.new-gif-window h4 {
+  margin-top: 30px;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #110038;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+.new-gif-window p, .new-gif-window ol {
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #110038;
+  letter-spacing: 0;
+  line-height: 20px;
 }
 
 /*# sourceMappingURL=index.css.map */
