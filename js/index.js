@@ -1,5 +1,4 @@
 // CONFIGURATION TO GIF API
-let apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 let UserAppId = "";
 let scrollCount = 0;
 var globalTheme = true;

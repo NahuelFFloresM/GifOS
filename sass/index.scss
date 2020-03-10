@@ -74,6 +74,7 @@
         border: constants.$common_border;
         position: absolute;
         margin-top: 18px;
+        color:red;
         margin-left: 1px;
         opacity: 1;
     }
@@ -380,28 +381,58 @@
 }
 
 .new-gif-window{
-    margin: 75px 25% 153px 25%;
+    margin: 75px 20% 153px 20%;
     height: 384px;
     padding: 3px;
     background: #E6E6E6;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    font-family: 'Chakra Petch', sans-serif;
 
-    h4{
-        margin-top: 30px;
-        font-family: 'Chakra Petch', sans-serif;
-        font-weight: 600;
-        font-size: 16px;
-        color: #110038;
-        letter-spacing: 0;
-        line-height: 22px;
+    .top-bar{
+        box-shadow: unset;
     }
 
-    p,ol{
-        font-family: 'Chakra Petch', sans-serif;
+    .new-gif-window-content{
+        margin-left: 76px;
+        color: #110038;
+
+        h4{
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #110038;
+            letter-spacing: 0;
+            line-height: 22px;
+            margin-bottom: 17px;
+        }
+        ol{
+            margin-bottom: 28px;
+        }
+    
+        p,li{
+            font-weight: 400;
+            font-size: 14px;
+            color: #110038;
+            letter-spacing: 0;
+            line-height: 20px;
+            margin-bottom: 10px;
+        }
+        li{
+            list-style: none;
+        }
+
+        b{
+            font-weight: 700;
+            color: #00001A;
+        }
+    }
+
+    .btn{
+        font-size: 16px;
         font-weight: 400;
-        font-size: 14px;
         color: #110038;
         letter-spacing: 0;
-        line-height: 20px;
+        text-align: center;
+        line-height: 18px;
     }
 }
