@@ -1,5 +1,18 @@
 // Prefer camera resolution nearest to 1280x720.
-var constraints = { audio: true, video: { width: 1280, height: 720 } }; 
+var constraints = { audio: true, video: { width: 1280, height: 720 } };
+let video = document.getElementById('gif-video');
+
+// recorder = RecordRTC(stream, {
+//     type: 'gif',
+//     frameRate: 1,
+//     quality: 10,
+//     width: 360,
+//     hidden: 240,    
+//     onGifRecordingStarted: function() {
+//         console.log('started')
+//     },
+// }
+// );
 
 // navigator.mediaDevices.getUserMedia(constraints)
 // .then(function(mediaStream) {
@@ -23,4 +36,5 @@ function getStreamAndRecord () {
     })
 }
 
-document.getElementById('gif-video').src = getStreamAndRecord();
+// videotag.src = getStreamAndRecord();
+// videotag.play();
