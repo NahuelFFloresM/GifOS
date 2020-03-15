@@ -7,6 +7,18 @@ function loadUserGifs(user){
     // });
 };
 
+recorder = RecordRTC(stream, {
+        type: 'gif',
+        frameRate: 1,
+        quality: 10,
+        width: 360,
+        hidden: 240,    
+        onGifRecordingStarted: function() {
+            console.log('started')
+        },
+    }
+);
+
 document.getElementById('cancel-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
     localStorage.removeItem('newGif-command');
