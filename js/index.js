@@ -2,6 +2,7 @@
 let UserAppId = "";
 let scrollCount = 0;
 var globalTheme = true;
+let activeSearch = "";
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
@@ -44,24 +45,36 @@ function changeTheme(theme){
     }
 }
 
+function getSlug(text){
+    let slugs = text.split('-');
+    let response = "";
+    if (slugs[0]) response += "#"+slugs[0];
+    if (slugs[1]) response += " #"+slugs[1];
+    if (slugs[2]) response += " #"+slugs[2];
+    return response;
+}
+
 /// FUNCTION TO GET FROM DB- MOVE TO ANOTHER JSFILE
-function getSearchResults(search,limit) {
-    getLimitGifs(search,limit).then( response => {
-        document.getElementById('suggestions-title').innerHTML = "Ejemplo de búsqueda: "+search;
+function getSearchResults(search,limit,offset) {
+    getLimitGifs(search,limit,offset).then( response => {
+        document.getElementById('trends-title').placeholder = "Ejemplo de búsqueda: "+search;
         document.getElementById('trendings-container').innerHTML = "";
         response.data.forEach(element => {
             var item = document.createElement('div');
             item.className += 'trend-item';
+            item.onclick = function() {getSearchResults(slug,12,scrollCount)};
             var img = document.createElement('img');
             img.className = 'img-item';
             img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
             img.alt = "..gif-alt";
             var hasht = document.createElement('div');
-            hasht.innerHTML = "#Hashtag";
+            let slug = getSlug(element.slug);
+            hasht.innerHTML = slug;
             hasht.className ='text-bar hashtag';
             item.appendChild(img);
             item.appendChild(hasht);
             document.getElementById('trendings-container').appendChild(item);
+            scrollCount +=offset;
         });
     }).catch(error => {
         console.log(error);
@@ -71,23 +84,27 @@ function getSearchResults(search,limit) {
 // GET RANDOM RESULTS OF GYPHY
 function getRandomResults() { 
     getRandomGifs().then(response => {
-        var item = document.createElement('div');
+        let item = document.createElement('div');
         item.className += 'suggestion-item pos-relative';
-        var header = document.createElement('header');
+        item.id = response.data.id;
+        let header = document.createElement('header');
         header.className = 'text-bar top-bar theme-day';
-        header.innerHTML ='#HashTag';
-        var closeIcon = document.createElement('img');
+        let slug = getSlug(response.data.slug);
+        header.innerHTML = slug;
+        let closeIcon = document.createElement('img');
         closeIcon.className = 'close-icon';
         closeIcon.src = "./assets/close.svg";
         closeIcon.alt = "Close Window";
+        closeIcon.onclick = function(){document.getElementById(response.data.id).remove(); getRandomResults();}
         header.appendChild(closeIcon);
-        var img = document.createElement('img');
+        let img = document.createElement('img');
         img.className = 'img-item';
         img.src = 'https://media.giphy.com/media/'+ response.data.id +'/giphy.gif';
-        img.alt = "..gif-alt";
-        var btn = document.createElement('button');
+        img.alt = slug;
+        let btn = document.createElement('button');
         btn.className = "btn btn-more";
-        btn.innerHTML = "Ver mas...";
+        btn.innerHTML = "Ver más...";
+        btn.onclick = function() {getSearchResults(slug,12)};
         item.appendChild(header);
         item.appendChild(img);
         item.appendChild(btn);
@@ -100,16 +117,22 @@ function getRandomResults() {
 function getTrendingsResults(limit,offset){
     scrollCount +=offset;
     getTrendsGifs(limit,scrollCount).then(response => {
-        console.log(response);
         response.data.forEach( element => {
-            var item = document.createElement('div');
+            let item = document.createElement('div');
+            let slug = getSlug(element.slug);
             item.className += 'trend-item';
-            var img = document.createElement('img');
+            item.onclick = function() {
+                document.getElementById('suggestions-title').style.display = 'none';
+                document.getElementById('suggestions-container').style.display = 'none';
+                document.getElementById('trends-title').placeholder = 'Ejemplo de búsqueda: '+slug;
+                getSearchResults(slug,12,12);
+            }
+            let img = document.createElement('img');
             img.className = 'img-item';
             img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
             img.alt = "..gif-alt";
-            var hasht = document.createElement('div');
-            hasht.innerHTML = "#Hashtag";
+            let hasht = document.createElement('div');
+            hasht.innerHTML = slug;
             hasht.className +='text-bar hashtag';
             item.appendChild(img);
             item.appendChild(hasht);
@@ -176,13 +199,20 @@ document.getElementById('subsearch-box-container').addEventListener('focusout',f
 document.getElementById('search-action-btn').addEventListener('click', function(event){
     var searchText = document.getElementById('search-input').value;
     document.getElementById('subsearch-box').style.display = 'none';
-    getSearchResults(searchText,12);
+    getSearchResults(searchText,12,12);
+});
+
+document.getElementById('btn-newGif').addEventListener('click', function(event){
+    localStorage.setItem('newGif-command','newgif');
+    window.location = "user.html";
+    
 });
 
 window.addEventListener('scroll',function(event){
     let position = document.getElementById('end-trendings');
     let screen = window.screen.height+window.pageYOffset;
     if( position.offsetTop < screen){
+        if (activeSearch){ getSearchResults(activeSearch,12,scrollCount)}
         getTrendingsResults(12,scrollCount);
     }
 });

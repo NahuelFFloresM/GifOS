@@ -2,8 +2,8 @@
 let apiKey = 'QZKjaiFPDjfLUn7lHzk73ZFkJUrpf5WN';
 
 
-let getLimitGifs = (search,limit) => new Promise((resolve,reject) =>{
-    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit);
+let getLimitGifs = (search,limit,offset) => new Promise((resolve,reject) =>{
+    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + search + '&limit='+ limit+ '&offset='+ offset);
     xhr.then(response => resolve(response))
     .catch(error => reject(error));
 });

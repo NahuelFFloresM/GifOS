@@ -15,9 +15,10 @@
     <div class="top-bar theme-day"><span>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</span></div>
     <div class="container-centered">
         <div class="nav-bar">
-            <a href="index.html"><img src="assets/gifOF_logo.png" alt="Web Logo" id="web-logo"></a>            
+            <a href="user.html" id="arrow-logo-link"><img src="assets/arrow.svg" alt="Web Logo" id="arrow-logo"></a>            
+            <a href="index.html"><img src="assets/gifOF_logo.png" alt="Web Logo" id="web-logo"></a>
             <div class="nav-buttons">
-                <button class="btn theme-day">Crear Guifos</button>
+                <button class="btn theme-day" id="btn-newGif">Crear Guifos</button>
                 <div class="pos-relative btn-select bg-day" id="dropdown-buttons">
                     <button class="btn theme-day ">Elegir Tema</button>
                     <button class="btn theme-day drop-down-button"><img src="./assets/dropdown.svg" alt="Theme Dropdown" class="icon"></button>
@@ -31,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="new-gif-window pos-relative">
+        <div class="new-gif-window pos-relative" id="capture_1">
             <header class="top-bar theme-day">Crear Guifos</header>
             <div class="new-gif-window-content">
                 <h4>Aquí podrás crear tus propios guifos</h4>
@@ -44,11 +45,24 @@
                     <li>¿Quieres comenzar a crear tu <b>guifo</b> ahora?</li>
                 </ol>
             </div>
-            <div>
-                <button class="btn">Cancelar</button>
-                <button class="btn theme-day">Comenzar</button>
+            <div class="pos-absolute pos-r-36px">
+                <button class="btn btn-16r" id="cancel-new-gif">Cancelar</button>
+                <button class="btn theme-day" id="start-new-gif">Comenzar</button>
             </div>
         </div>
+        <div class="video-window pos-relative" id="capture_2">
+            <header class="text-bar top-bar theme-day">Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
+            <div class="video-content">
+                <video width="832" height="424"></video>
+            </div>
+            <div id="capture-btn">
+                <div class="pos-absolute pos-r-36px">
+                    <button class="btn btn-theme-day"><img src="./assets/camera.svg" alt="Capture Icon" class="icon"></button>
+                    <button class="btn btn-theme-day" id="btn-text">Capturar</button>
+                </div>
+            </div>
+        </div>
+        
         <input id="suggestions-title" type="text" placeholder="Mis Guifos">
     </div>
     <script src="js/promises.js"></script>
@@ -56,5 +70,6 @@
     <script src="js/user.js"></script>
     <script src="js/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </body>
 </html>

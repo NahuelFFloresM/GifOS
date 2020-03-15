@@ -301,7 +301,7 @@
         max-height: 313px;
         padding: 3px 4px;    
         margin: 0px 8px;    
-        .text-bar{    
+        .text-bar, #capture_2 .text-bar{    
             .close-icon{
                 position: absolute;
                 right: 6px;
@@ -387,6 +387,7 @@
     background: #E6E6E6;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     font-family: 'Chakra Petch', sans-serif;
+    // display: none;
 
     .top-bar{
         box-shadow: unset;
@@ -435,4 +436,47 @@
         text-align: center;
         line-height: 18px;
     }
+}
+
+#arrow-logo-link{
+    position: absolute;
+    left: 60px;
+    display: none;
+}
+
+.video-window{
+    margin-top: 85px;
+    margin-left: 165px;
+    padding: 3px;
+    width: 860px;
+    height: 548px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+
+    .close-icon{
+        position: absolute;
+        right: 13px;
+    }
+
+    video{
+        margin: 8px 14px 21px 8px;
+        background: #FFFFFF;
+        border: 1px solid #979797;
+        box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    }
+
+    .top-bar{
+        box-shadow: unset;
+    }
+}
+
+.btn-16r{
+    margin-right: 16px;
+}
+.pos-r-36px{
+    right: 36px;
+}
+.pos-absolute{
+    position: absolute;
+    display: inherit;
 }
