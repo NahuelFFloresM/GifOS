@@ -480,3 +480,41 @@
     position: absolute;
     display: inherit;
 }
+
+#capture_1,#capture_2,#record-container{
+    display: none;
+} 
+
+#capture-btn{
+    display: inline-flex;
+    
+    .btn:first-child{
+        width: 36px;
+        height: 36px;
+    }
+    .btn:last-child{
+        margin-right: -1px;
+        color:black; // CAMBIAR POR TEMA
+    }
+    img{
+        padding: 7px;
+    }
+    .btn{
+        height: 36px;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 18px;
+    }
+
+    #gif-cronometer{
+        width: 124px;
+        margin-left: 16px;
+        height: 36px;
+        display: none;
+        background: #FFFFFF;
+        border: 1px solid #979797;
+        box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    }
+}

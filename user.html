@@ -56,21 +56,27 @@
                 <video width="832" height="424" id="gif-video"></video>
             </div>
             <div id="capture-btn">
-                <div class="pos-absolute pos-r-36px">
+                <div class="pos-absolute pos-r-36px" id="camera-container">
                     <button class="btn btn-theme-day"><img src="./assets/camera.svg" alt="Capture Icon" class="icon"></button>
-                    <button class="btn btn-theme-day" id="btn-text" onclick="getStreamAndRecord()">Capturar</button>
+                    <button class="btn btn-theme-day" id="btn-capture" onclick="getStreamAndRecord()">Capturar</button>
+                </div>
+                <div id="gif-cronometer">                    
+                </div>
+                <div class="pos-absolute pos-r-36px" id="record-container">
+                    <button class="btn btn-theme-day"><img src="./assets/recording.svg" alt="Ready Icon" class="icon"></button>
+                    <button class="btn btn-theme-day" id="btn-ready" onclick="stopStream()">Listo</button>
                 </div>
             </div>
         </div>
         
         <input id="suggestions-title" type="text" placeholder="Mis Guifos">
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="js/promises.js"></script>
     <script src="js/video.js"></script>
     <script src="js/userfunctions.js"></script>
     <script src="js/user.js"></script>
     <script src="js/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </body>
 </html>
