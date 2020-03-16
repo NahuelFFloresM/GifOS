@@ -9,6 +9,7 @@ function loadUserGifs(user){
 
 let hours = `00`,minutes = `00`,seconds = `00`;
 let cronometerTag = document.getElementById('gif-cronometer');
+cronometerTag.textContent = '00:00:00:00';
 
 function chronometer() {
     seconds ++
@@ -23,7 +24,7 @@ function chronometer() {
       hours ++      
       if (hours < 10) hours = `0` + hours
     }
-    cronometerTag.textContent = `${hours}:${minutes}:${seconds}`
+    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`
   }
 
 document.getElementById('cancel-new-gif').addEventListener('click',function(){
@@ -34,9 +35,16 @@ document.getElementById('cancel-new-gif').addEventListener('click',function(){
 document.getElementById('start-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
     document.getElementById('capture_2').style.display = 'block';
+    getStreamAndRecord();
 });
 
 document.getElementById('camera-container').addEventListener('click',function(){
+    document.getElementById('camera-container').style.display = 'none';
+    document.getElementById('record-container').style.display = 'inherit';
+    cronometerTag.style.display = 'block';
+    chronometerCall = setInterval(chronometer, 1000);
+})
+document.getElementById('record-container').addEventListener('click',function(){
     document.getElementById('camera-container').style.display = 'none';
     document.getElementById('record-container').style.display = 'inherit';
     cronometerTag.style.display = 'block';
