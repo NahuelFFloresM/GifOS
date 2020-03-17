@@ -56,4 +56,15 @@ body {
   position: relative;
 }
 
+.drop-down.theme-night {
+  background: #B4B4B4;
+}
+.drop-down.theme-night .btn:first-child {
+  background: #CCCCCC;
+}
+.drop-down.theme-night .btn:last-child {
+  background: #2E32FB;
+  color: white;
+}
+
 /*# sourceMappingURL=night_themes.css.map */

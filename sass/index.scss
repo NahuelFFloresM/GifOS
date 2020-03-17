@@ -305,6 +305,7 @@
             .close-icon{
                 position: absolute;
                 right: 6px;
+                top: 6px;
             }
         }
 
@@ -481,13 +482,13 @@
     display: inherit;
 }
 
-#capture_1,#capture_2,#record-container{
+#capture_1,#capture_2,#record-container,#end-container{
     display: none;
 } 
 
 #capture-btn{
+
     display: inline-flex;
-    
     .btn:first-child{
         width: 36px;
         height: 36px;
@@ -509,7 +510,8 @@
     }
 
     #gif-cronometer{
-        width: 124px;
+        position: absolute;
+        max-width: 124px;
         margin-left: 16px;
         height: 36px;
         display: none;
@@ -522,5 +524,36 @@
         color: #110038;
         letter-spacing: 0;
         line-height: 22px;
+    }
+}
+
+#record-container{
+
+    .btn{
+        background: #FF6161;
+        border: 1px solid #110038;
+        box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+    }
+
+    .btn:first-child, .btn:last-child {
+        background: #FF6161;
+    }
+
+    .btn:first-child{
+        margin-right: -1px;
+    }
+    
+}
+
+#camera-container{
+    display: inline-flex;
+}
+
+#end-container{
+    .btn:first-child{
+        background: #FFF4FD;
+        width: 144px;
+        border: 1px solid #110038;
+        box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
     }
 }

@@ -7,7 +7,6 @@
     <link href="css/index.css" rel="stylesheet">
     <link href="css/day_themes.css" rel="stylesheet">
     <link href="css/night_themes.css" rel="stylesheet">
-    <link href="css/borrador.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch:400,700&display=swap" rel="stylesheet">
     <title>Guifos</title>
 </head>
@@ -60,13 +59,17 @@
                     <button class="btn btn-theme-day"><img src="./assets/camera.svg" alt="Capture Icon" class="icon"></button>
                     <button class="btn btn-theme-day" id="btn-capture">Capturar</button>
                 </div>
-                <div id="gif-cronometer">                    
-                </div>
+                <div id="gif-cronometer"></div>
                 <div class="pos-absolute pos-r-36px" id="record-container">
-                    <button class="btn btn-theme-day"><img src="./assets/recording.svg" alt="Ready Icon" class="icon"></button>
-                    <button class="btn btn-theme-day" id="btn-ready">Listo</button>
+                    <button class="btn "><img src="./assets/recording.svg" alt="Ready Icon" class="icon"></button>
+                    <button class="btn " id="btn-ready">Listo</button>
+                </div>
+                <div class="pos-absolute pos-r-36px" id="end-container">
+                    <button class="btn btn-16r" id="cancel-new-gif">Repetir Captura</button>
+                    <button class="btn theme-day" id="start-new-gif">Subir Guifo</button>
                 </div>
             </div>
+            
         </div>
         
         <input id="suggestions-title" type="text" placeholder="Mis Guifos">

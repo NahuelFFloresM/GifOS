@@ -262,6 +262,7 @@
 #suggestions-container .suggestion-item .text-bar .close-icon, #suggestions-container .suggestion-item #capture_2 .text-bar .close-icon {
   position: absolute;
   right: 6px;
+  top: 6px;
 }
 #suggestions-container .suggestion-item .btn-more {
   background: #4180F6;
@@ -420,7 +421,7 @@
   display: inherit;
 }
 
-#capture_1, #capture_2, #record-container {
+#capture_1, #capture_2, #record-container, #end-container {
   display: none;
 }
 
@@ -447,7 +448,8 @@
   line-height: 18px;
 }
 #capture-btn #gif-cronometer {
-  width: 124px;
+  position: absolute;
+  max-width: 124px;
   margin-left: 16px;
   height: 36px;
   display: none;
@@ -460,6 +462,29 @@
   color: #110038;
   letter-spacing: 0;
   line-height: 22px;
+}
+
+#record-container .btn {
+  background: #FF6161;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+}
+#record-container .btn:first-child, #record-container .btn:last-child {
+  background: #FF6161;
+}
+#record-container .btn:first-child {
+  margin-right: -1px;
+}
+
+#camera-container {
+  display: inline-flex;
+}
+
+#end-container .btn:first-child {
+  background: #FFF4FD;
+  width: 144px;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -71,3 +71,17 @@ body{
 .suggestion-item{
     position: relative;
 }
+
+.drop-down{
+    &.theme-night{
+        background: #B4B4B4;
+        .btn:first-child{
+            background: #CCCCCC;
+        }
+    
+        .btn:last-child{
+            background: #2E32FB;
+            color: white;
+        }
+    }
+}

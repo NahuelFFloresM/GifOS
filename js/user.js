@@ -7,6 +7,9 @@ function loadUserGifs(user){
     // });
 };
 
+// @PARAMS
+// recoerder - Variable en video.js para obtener BLOB del gif y subirlo
+
 let hours = `00`,minutes = `00`,seconds = `00`;
 let cronometerTag = document.getElementById('gif-cronometer');
 cronometerTag.textContent = '00:00:00:00';
@@ -34,7 +37,9 @@ document.getElementById('cancel-new-gif').addEventListener('click',function(){
 
 document.getElementById('start-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
-    document.getElementById('capture_2').style.display = 'block';
+    document.getElementById('capture_2').style.display = 'inherit';
+    document.getElementById('suggestions-title').style.opacity = 0;
+    // ocultar mis guifos  
     getStreamAndRecord();
 });
 
@@ -43,17 +48,19 @@ document.getElementById('camera-container').addEventListener('click',function(){
     document.getElementById('record-container').style.display = 'inherit';
     cronometerTag.style.display = 'block';
     chronometerCall = setInterval(chronometer, 1000);
+    recorder.startRecording();
 })
 document.getElementById('record-container').addEventListener('click',function(){
-    document.getElementById('camera-container').style.display = 'none';
-    document.getElementById('record-container').style.display = 'inherit';
-    cronometerTag.style.display = 'block';
-    chronometerCall = setInterval(chronometer, 1000);
+    recorder.stopRecording();
+    clearInterval(chronometerCall);
+    document.getElementById('record-container').style.display = 'none';
+    document.getElementById('end-container').style.display = 'inherit';
 });
 
 
 document.getElementById('btn-newGif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'block';
+      
     localStorage.setItem('newGif-command','newGif-copmmand');
 });
 

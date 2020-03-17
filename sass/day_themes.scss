@@ -31,11 +31,13 @@ body{
 
 .drop-down .theme-day{
 
-    background: #E6E6E6;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 
-    .btn{
-        
+    &:first-of-type{
+        background: #FFF4FD;
+    }
+
+    .btn{        
         width: 150px;
         text-align: left;
         text-indent: 16px;
@@ -43,9 +45,7 @@ body{
         border: 1px solid #808080;
         box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
 
-        &:first-child{
-            margin-bottom: 10px;
-        }
+        
 
         &:hover{
             background: constants.$day_background;
@@ -70,4 +70,17 @@ body{
 
 .suggestion-item{
     position: relative;
+}
+
+.drop-down{
+    &.theme-day{
+        background: #E6E6E6;
+        .btn:first-child{
+            background: #FFF4FD;
+        }
+    
+        .btn:last-child{
+            background: #F0F0F0;
+        }
+    }
 }

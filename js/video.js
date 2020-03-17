@@ -1,6 +1,7 @@
 // Prefer camera resolution nearest to 1280x720.
 var constraints = { audio: true, video: { width: 1280, height: 720 } };
 let video = document.getElementById('gif-video');
+var recorder;
 
 function getStreamAndRecord () {
     navigator.mediaDevices.getUserMedia({
