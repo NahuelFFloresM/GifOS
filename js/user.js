@@ -7,6 +7,9 @@ function loadUserGifs(user){
     // });
 };
 
+var recorder;
+
+
 // @PARAMS
 // recoerder - Variable en video.js para obtener BLOB del gif y subirlo
 
@@ -40,7 +43,8 @@ document.getElementById('start-new-gif').addEventListener('click',function(){
     document.getElementById('capture_2').style.display = 'inherit';
     document.getElementById('suggestions-title').style.opacity = 0;
     // ocultar mis guifos  
-    getStreamAndRecord();
+    getStream();
+    
 });
 
 document.getElementById('camera-container').addEventListener('click',function(){
@@ -48,10 +52,22 @@ document.getElementById('camera-container').addEventListener('click',function(){
     document.getElementById('record-container').style.display = 'inherit';
     cronometerTag.style.display = 'block';
     chronometerCall = setInterval(chronometer, 1000);
+    recorder = RecordRTC(video, {
+        type: 'gif',
+        frameRate: 1,
+        quality: 10,
+        width: 832,
+        height: 424,
+        hidden: 240,
+        onGifRecordingStarted: function() {
+            console.log('started')
+        },
+    });
     recorder.startRecording();
 })
 document.getElementById('record-container').addEventListener('click',function(){
     recorder.stopRecording();
+    console.log(recorder.getBlob());
     clearInterval(chronometerCall);
     document.getElementById('record-container').style.display = 'none';
     document.getElementById('end-container').style.display = 'inherit';
