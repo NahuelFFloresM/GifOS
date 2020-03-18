@@ -1,3 +1,36 @@
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -53,27 +86,23 @@
   position: absolute;
   top: 20%;
   bottom: 20%;
-  color: #110038;
 }
 .nav-buttons #mis-guifos a:active {
   opacity: 50%;
 }
-.nav-buttons .short-underline-day, .nav-buttons .short-underline-night {
+.nav-buttons .short-underline-day {
   width: 8px;
   border: 1px solid #110038;
   position: absolute;
   margin-top: 18px;
-  color: red;
   margin-left: 1px;
-  opacity: 1;
 }
 .nav-buttons .short-underline-night {
-  opacity: 0;
-  border-color: #FFFFFF;
-}
-
-.hover-night:hover {
-  border: 1px dotted #FFFFFF;
+  width: 8px;
+  border: 1px solid #FFFFFF;
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 1px;
 }
 
 .btn-select > .btn:first-child {
@@ -292,8 +321,13 @@
 }
 #trendings-container .trend-item {
   position: relative;
-  max-width: 288px;
-  max-height: 298px;
+  background: linear-gradient(270deg, #ffffff, #000000);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 2s ease infinite;
+  -moz-animation: AnimationName 2s ease infinite;
+  animation: AnimationName 2s ease infinite;
+  width: 288px;
+  height: 298px;
   margin: 8px;
   flex: 1 0 21%;
 }
