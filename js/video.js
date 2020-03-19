@@ -11,7 +11,18 @@ function getStreamAndRecord () {
         width: {max: 832 }
     }}).then(function(stream) {
         video.srcObject = stream;
-        video.play()
+        video.play();
+        recorder = RecordRTC(stream, {
+            type: 'gif',
+            frameRate: 1,
+            quality: 10,
+            width: 832,
+            height: 424,
+            hidden: 240,
+            onGifRecordingStarted: function() {
+                console.log('started');
+            },
+        });
     })
 }
 

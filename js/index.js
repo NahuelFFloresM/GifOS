@@ -7,14 +7,16 @@ let activeSearch = "";
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
 function changeTheme(theme){
-
     globalTheme = !globalTheme;
+    localStorage.setItem('globalTheme',theme);
     //Nombre de las clases A USAR/REEMPLAZAR
     const btnDay = 'theme-day';
     const btnNight = 'theme-night';
     
-    var themeDay = theme ==='day' ? true:false;
-    var btnElements;
+    let themeDay = theme ==='day' ? true:false;
+    let btnElements;
+    let subline;
+
     if (themeDay){
         btnElements = document.getElementsByClassName(btnNight);
         replaceClases(btnElements,btnNight,btnDay);
@@ -22,27 +24,39 @@ function changeTheme(theme){
         btnSailor = document.getElementsByClassName('bg-night');
         replaceClases(btnSailor,'bg-night','bg-day');
 
+        subline = document.getElementsByClassName('short-underline-night');
+        subline[0].style.opacity = '0';
+        subline = document.getElementsByClassName('short-underline-day');
+        subline[0].style.opacity = '1';
+
+        let logo = document.getElementById('web-logo');
+        logo.src = "assets/gifOF_logo.png";
+
+        let misg = document.getElementById('mis-guifos').classList;
+
+        let searchBox = document.getElementsByClassName('box-night');
+        replaceClases(searchBox,'box-night','box-day');
+        
+
     } else {
         btnElements = document.getElementsByClassName(btnDay);
         replaceClases(btnElements,btnDay,btnNight);
 
         btnSailor = document.getElementsByClassName('bg-day');
         replaceClases(btnSailor,'bg-day','bg-night');
+
+        subline = document.getElementsByClassName('short-underline-day');
+        subline[0].style.opacity = '0';
+        subline = document.getElementsByClassName('short-underline-night');
+        subline[0].style.opacity = '1';
+
+        let logo = document.getElementById('web-logo');
+        logo.src = "assets/gifOF_logo_dark.png";
+
+        let searchBox = document.getElementsByClassName('box-day');
+        replaceClases(searchBox,'box-day','box-night');
     }
 
-    
-    var subline;
-    if (themeDay){
-        subline = document.getElementsByClassName('short-underline-night');
-        subline[0].style.opacity = '0';
-        subline = document.getElementsByClassName('short-underline-day');
-        subline[0].style.opacity = '1';
-    } else {
-        subline = document.getElementsByClassName('short-underline-day');
-        subline[0].style.opacity = '0';
-        subline = document.getElementsByClassName('short-underline-night');
-        subline[0].style.opacity = '1';
-    }
 }
 
 function getSlug(text){
@@ -88,7 +102,8 @@ function getRandomResults() {
         item.className += 'suggestion-item pos-relative';
         item.id = response.data.id;
         let header = document.createElement('header');
-        header.className = 'text-bar top-bar theme-day';
+        header.className = 'text-bar top-bar';
+        header.className += globalTheme ? ' theme-day':' theme-night';
         let slug = getSlug(response.data.slug);
         header.innerHTML = slug;
         let closeIcon = document.createElement('img');
@@ -134,6 +149,7 @@ function getTrendingsResults(limit,offset){
             let hasht = document.createElement('div');
             hasht.innerHTML = slug;
             hasht.className +='text-bar hashtag';
+            hasht.className += globalTheme ? ' theme-day':' theme-night';
             item.appendChild(img);
             item.appendChild(hasht);
             document.getElementById('trendings-container').appendChild(item);
@@ -171,9 +187,23 @@ document.getElementById('dropdown-buttons').addEventListener('mouseleave', funct
     document.getElementById('drop-down').style.display = "none";
 });
 
+async function getSuggestions(inputtext){
+    getLimitGifs(inputtext,1,0).then( response => {
+        let suggestions = response.data[0].title.split(' ');
+        let remove = suggestions.indexOf('GIF');
+        if (remove) suggestions.splice(remove,1);
+        console.log(suggestions);
+        document.getElementById('first-search-button').innerHTML = inputtext;
+        document.getElementById('second-search-button').innerHTML = suggestions[0];
+        document.getElementById('third-search-button').innerHTML = suggestions[1];
+        
+    });
+}
+
 document.getElementById('search-input').addEventListener('input',function(event){
     var btnSearch = document.getElementsByClassName('search-btn');
     var inputText = this.value;
+    getSuggestions(inputText);
     if (!!inputText){
         /// ARAMAR PARA SABER EL TEMA ACTUAL
         if (globalTheme){
@@ -190,9 +220,10 @@ document.getElementById('search-input').addEventListener('input',function(event)
         }        
         document.getElementsByClassName('subsearch-box')[0].style.display = 'none';
     }
+
 });
 
-document.getElementById('subsearch-box-container').addEventListener('focusout',function(event){
+document.getElementById('subsearch-box').addEventListener('focusout',function(event){
     event.target.style.display = 'none';
 });
 
@@ -204,8 +235,7 @@ document.getElementById('search-action-btn').addEventListener('click', function(
 
 document.getElementById('btn-newGif').addEventListener('click', function(event){
     localStorage.setItem('newGif-command','newgif');
-    window.location = "user.html";
-    
+    window.location = "user.html";    
 });
 
 window.addEventListener('scroll',function(event){
@@ -220,6 +250,11 @@ window.addEventListener('scroll',function(event){
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
     scrollCount = 9;
+    let actualTheme = localStorage.getItem('globalTheme');
+    if (actualTheme == 'night'){
+        changeTheme('night');
+    }
+
     if (!userNew()){
         UserAppId = generateID();
     } else{

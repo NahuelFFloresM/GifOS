@@ -32,6 +32,7 @@ function chronometer() {
 
 document.getElementById('cancel-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
+    document.getElementById('arrow-logo-link').style.display = 'none';
     localStorage.removeItem('newGif-command');
 });
 
@@ -62,12 +63,17 @@ document.getElementById('record-container').addEventListener('click',function(){
 
 document.getElementById('btn-newGif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'block';
-      
+    document.getElementById('arrow-logo-link').style.display = 'block';
     localStorage.setItem('newGif-command','newGif-copmmand');
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
+    let actualTheme = localStorage.getItem('globalTheme');
+    if (actualTheme == 'night'){
+        changeTheme('night');
+    }
+    
     if (userNew()){
         let user = getUserID();
         loadUserGifs(user);

@@ -67,4 +67,31 @@ body {
   color: white;
 }
 
+.hover-night a {
+  color: white;
+}
+
+.hover-night:hover {
+  border: 1px dotted #FFFFFF;
+}
+
+#trendings-container .hashtag.theme-night {
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.subsearch-box.box-night {
+  background: #B4B4B4;
+  padding: 3px;
+  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+.subsearch-box.box-night .btn {
+  background: #B4B4B4;
+}
+
+.search-bar.box-night {
+  background: #B4B4B4;
+  padding: 3px;
+  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
 /*# sourceMappingURL=night_themes.css.map */
