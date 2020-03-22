@@ -33,10 +33,12 @@ function changeTheme(theme){
         logo.src = "assets/gifOF_logo.png";
 
         let misg = document.getElementById('mis-guifos').classList;
+        misg.toggle('hover-day',true);
+        misg.toggle('hover-night',false);
+
 
         let searchBox = document.getElementsByClassName('box-night');
         replaceClases(searchBox,'box-night','box-day');
-        
 
     } else {
         btnElements = document.getElementsByClassName(btnDay);
@@ -55,6 +57,11 @@ function changeTheme(theme){
 
         let searchBox = document.getElementsByClassName('box-day');
         replaceClases(searchBox,'box-day','box-night');
+
+        let misg = document.getElementById('mis-guifos').classList;
+        misg.toggle('hover-day',false);
+        misg.toggle('hover-night',true);
+
     }
 
 }

@@ -22,12 +22,12 @@
                     <button class="btn theme-day ">Elegir Tema</button>
                     <button class="btn theme-day drop-down-button"><img src="./assets/dropdown.svg" alt="Theme Dropdown" class="icon"></button>
                     <div class="drop-down theme-day" id="drop-down" style="display: none;">
-                        <button class="btn" onClick="changeTheme('day')"><span class="short-underline-day"></span>Sailor Day</button >
-                        <button class="btn" onClick="changeTheme('night')"><span class="short-underline-night"></span>Sailor Night</button>
+                        <button class="btn" onClick="changeTheme('day')"><span class="short_underline short-underline-day"></span>Sailor Day</button >
+                        <button class="btn" onClick="changeTheme('night')"><span class="short_underline short-underline-night"></span>Sailor Night</button>
                     </div>
                 </div>
                 <div class="pos-relative theme-day hover-day" id="mis-guifos">
-                    <a href=""><span class="short_underline"></span> Mis Guifos</a>
+                    <a href="#"><span class="short_underline"></span> Mis Guifos</a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="video-window pos-relative" id="capture_2">
-            <header class="text-bar top-bar theme-day">Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
+            <header class="text-bar top-bar theme-day" id="video-header">Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
             <div class="video-content">
                 <video width="832" height="424" id="gif-video"></video>
             </div>
@@ -79,7 +79,7 @@
     <script src="js/promises.js"></script>
     <script src="js/video.js"></script>
     <script src="js/userfunctions.js"></script>
-    <script src="js/user.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/user.js"></script>
 </body>
 </html>

@@ -90,16 +90,8 @@
 .nav-buttons #mis-guifos a:active {
   opacity: 50%;
 }
-.nav-buttons .short-underline-day {
+.nav-buttons .short_underline {
   width: 8px;
-  border: 1px solid #110038;
-  position: absolute;
-  margin-top: 18px;
-  margin-left: 1px;
-}
-.nav-buttons .short-underline-night {
-  width: 8px;
-  border: 1px solid #FFFFFF;
   position: absolute;
   margin-top: 18px;
   margin-left: 1px;

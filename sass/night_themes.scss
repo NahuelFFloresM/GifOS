@@ -87,10 +87,15 @@ body{
 }
 
 .hover-night{
-    a{
+    a {
         color: white;
+
+        .short_underline{
+            border: 1px solid #FFFFFF;
+        }
     }
 }
+    
 
 .hover-night:hover{
     border: 1px dotted #FFFFFF;
@@ -119,4 +124,8 @@ body{
         padding: 3px;
         box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
+}
+
+.short-underline-night{
+    border: 1px solid #FFFFFF;
 }

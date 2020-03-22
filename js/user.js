@@ -7,28 +7,12 @@ function loadUserGifs(user){
     // });
 };
 
+var newGif;
+
 // @PARAMS
 // recoerder - Variable en video.js para obtener BLOB del gif y subirlo
 
-let hours = `00`,minutes = `00`,seconds = `00`;
-let cronometerTag = document.getElementById('gif-cronometer');
-cronometerTag.textContent = '00:00:00:00';
 
-function chronometer() {
-    seconds ++
-    if (seconds < 10) seconds = `0` + seconds
-    if (seconds > 59) {
-        seconds = `00`
-        minutes ++
-        if (minutes < 10) minutes = `0` + minutes
-    }
-    if (minutes > 59) {
-      minutes = `00`
-      hours ++      
-      if (hours < 10) hours = `0` + hours
-    }
-    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`
-  }
 
 document.getElementById('cancel-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
@@ -40,19 +24,18 @@ document.getElementById('start-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
     document.getElementById('capture_2').style.display = 'inherit';
     document.getElementById('suggestions-title').style.opacity = 0;
+    getStreamAndCheck();
     // ocultar mis guifos  
-    getStreamAndRecord();
 });
 
 document.getElementById('camera-container').addEventListener('click',function(){
     document.getElementById('camera-container').style.display = 'none';
     document.getElementById('record-container').style.display = 'inherit';
+    document.getElementById('video-header').innerHTML = 'Capturando Tu Guifo';
     cronometerTag.style.display = 'block';
-    chronometerCall = setInterval(chronometer, 1000);
-    recorder.startRecording();
+    let newGif = getStreamAndRecord();
 })
 document.getElementById('record-container').addEventListener('click',function(){
-    recorder.stopRecording();
     let blob = recorder.getBlob();
     console.log(blob);
     clearInterval(chronometerCall);
@@ -67,12 +50,13 @@ document.getElementById('btn-newGif').addEventListener('click',function(){
     localStorage.setItem('newGif-command','newGif-copmmand');
 });
 
+let actualTheme = localStorage.getItem('globalTheme');
+if (actualTheme == 'night'){
+    changeTheme('night');
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
-    let actualTheme = localStorage.getItem('globalTheme');
-    if (actualTheme == 'night'){
-        changeTheme('night');
-    }
+    console.log("DOM fully loaded and parsed");    
     
     if (userNew()){
         let user = getUserID();

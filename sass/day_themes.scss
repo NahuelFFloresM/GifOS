@@ -28,6 +28,9 @@ body{
 .hover-day{
     a {
         color: #110038;
+        .short_underline{
+            border: 1px solid #110038;
+        }
     }
 }
 
@@ -102,4 +105,8 @@ body{
         background: #E6E6E6;
         box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     }
+}
+
+.short-underline-day{
+    border: 1px solid #110038;
 }

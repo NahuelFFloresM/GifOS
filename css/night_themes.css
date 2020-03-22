@@ -70,6 +70,9 @@ body {
 .hover-night a {
   color: white;
 }
+.hover-night a .short_underline {
+  border: 1px solid #FFFFFF;
+}
 
 .hover-night:hover {
   border: 1px dotted #FFFFFF;
@@ -92,6 +95,10 @@ body {
   background: #B4B4B4;
   padding: 3px;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.short-underline-night {
+  border: 1px solid #FFFFFF;
 }
 
 /*# sourceMappingURL=night_themes.css.map */
