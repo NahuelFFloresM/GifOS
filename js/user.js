@@ -42,7 +42,7 @@ function getStreamAndRecord () {
         height: { max: 424 },
         width: {max: 832 }
     }}).then(function(stream) {
-        video.src    = stream;
+        video.srcObject = stream;
         video.play();
         recorder = RecordRTC(stream, {
             type: 'gif',
@@ -57,20 +57,6 @@ function getStreamAndRecord () {
         });
     })
 }
-
-function getStreamAndCheck () {
-    navigator.mediaDevices.getUserMedia({
-    audio: false,
-    video: {
-        height: { max: 424 },
-        width: {max: 832 }
-    }}).then(function(stream) {
-        video.src = stream;
-        video.play();
-    })
-}
-
-
 
 document.getElementById('cancel-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
