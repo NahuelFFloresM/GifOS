@@ -96,7 +96,7 @@ document.getElementById('camera-container').addEventListener('click',function(){
 });
 
 document.getElementById('record-container').addEventListener('click',function(){
-    recorder.stopRecording( function(){
+    recorder.stopRecording(function(){
         clearInterval(chronometerCall);
         let blob = recorder.blob;
         let url = URL.createObjectURL(blob);
@@ -112,6 +112,14 @@ document.getElementById('btn-newGif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'block';
     document.getElementById('arrow-logo-link').style.display = 'block';
     localStorage.setItem('newGif-command','newGif-copmmand');
+});
+
+let icons = document.getElementsByClassName('close-icon');
+icons[0].addEventListener('click', function(){
+    video.pause();
+    document.getElementById('capture_2').style.display = 'none';
+    localStorage.removeItem('newGif-command');
+    document.getElementById('suggestions-title').style.opacity = 1;
 });
 
 let actualTheme = localStorage.getItem('globalTheme');
