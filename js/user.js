@@ -8,6 +8,7 @@ function loadUserGifs(user){
 };
 
 var newGif;
+var replay = document.getElementById('gif-replay');
 
 let video = document.getElementById('gif-video');
 var recorder;
@@ -84,11 +85,12 @@ document.getElementById('camera-container').addEventListener('click',function(){
 document.getElementById('record-container').addEventListener('click',function(){
     recorder.stopRecording(function(){
         clearInterval(chronometerCall);
-        let blob = recorder.blob;
+        let blob = recorder.getBlob();
         let url = URL.createObjectURL(blob);
-        video.src = url;
-        console.log(url);
-    });    
+        video.pause();
+        replay = document.getElementById('gif-replay');
+        replay.style.backgroundImage = "url('"+url+"')";
+    });
     document.getElementById('record-container').style.display = 'none';
     document.getElementById('end-container').style.display = 'inherit';
 });
