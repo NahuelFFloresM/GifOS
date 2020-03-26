@@ -45,15 +45,23 @@
                 </ol>
             </div>
             <div class="pos-absolute pos-r-36px">
-                <button class="btn btn-16r" id="cancel-new-gif">Cancelar</button>
+                <button class="btn btn-16r cancel-new-gif" id="cancel-new-gif">Cancelar</button>
                 <button class="btn theme-day" id="start-new-gif">Comenzar</button>
             </div>
         </div>
         <div class="video-window pos-relative" id="capture_2">
             <header class="text-bar top-bar theme-day" id="video-header">Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
             <div class="video-content">
-                <video width="832" height="424" id="gif-video" type="image/gif" controls autoplay></video>
-                <img width="832" height="424" id="gif-replay" class="gif-replay">
+                <div id="window-content">
+                    <video width="832" height="424" id="gif-video" type="image/gif"></video>
+                    <img src="" width="832" height="424" id="gif-replay" hidden alt="Replay Video">
+                    <div id="loading-content">
+                        <img src="./assets/globe_img.png" alt="Globe image">
+                        <h3>Estamos subiendo tu guifo…</h3>
+                        <div class="loading-bar" id="loading-bar-post"></div>
+                        <h4>Tiempo restante: <span class"line-trough">38 años</span> algunos minutos</h4>
+                    </div>
+                </div>
             </div>
             <div id="capture-btn">
                 <div class="pos-absolute pos-r-36px" id="camera-container">
@@ -66,8 +74,11 @@
                     <button class="btn " id="btn-ready">Listo</button>
                 </div>
                 <div class="pos-absolute pos-r-36px" id="end-container">
-                    <button class="btn btn-16r" id="cancel-new-gif">Repetir Captura</button>
-                    <button class="btn theme-day" id="start-new-gif">Subir Guifo</button>
+                    <button class="btn btn-16r" id="repeat-new-gif">Repetir Captura</button>
+                    <button class="btn theme-day" id="post-new-gif">Subir Guifo</button>
+                </div>
+                <div class="pos-absolute pos-r-36px" id="post-container">
+                    <button class="btn btn-16r cancel-new-gif" id="cancel-post-contianer">Cancelar</button>
                 </div>
             </div>
             

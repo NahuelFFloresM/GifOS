@@ -7,6 +7,13 @@ function loadUserGifs(user){
     // });
 };
 
+function saveLocalGif(gif_id){
+    let localSave = JSON.parse(localStorage.getItem('Gifs-IDs'));
+    console.log(localSave);
+    localSave.push(gif_id);
+    localStorage.setItem('Gifs_IDs',JSON.stringify(localSave));
+}
+
 var newGif;
 var replay = document.getElementById('gif-replay');
 
@@ -59,10 +66,19 @@ function getStreamAndRecord () {
     })
 }
 
-document.getElementById('cancel-new-gif').addEventListener('click',function(){
-    document.getElementById('capture_1').style.display = 'none';
-    document.getElementById('arrow-logo-link').style.display = 'none';
-    localStorage.removeItem('newGif-command');
+document.getElementById('btn-newGif').addEventListener('click',function(){
+    document.getElementById('capture_1').style.display = 'block';
+    document.getElementById('arrow-logo-link').style.display = 'block';
+    localStorage.setItem('newGif-command','newGif-copmmand');
+});
+
+let cancelbtns = document.getElementsByClassName('cancel-new-gif');
+Array.prototype.forEach.call(cancelbtns, function(element) {
+    element.addEventListener('click',function(){
+        document.getElementById('capture_1').style.display = 'none';
+        document.getElementById('arrow-logo-link').style.display = 'none';
+        localStorage.removeItem('newGif-command');
+    });
 });
 
 document.getElementById('start-new-gif').addEventListener('click',function(){
@@ -85,9 +101,11 @@ document.getElementById('camera-container').addEventListener('click',function(){
 document.getElementById('record-container').addEventListener('click',function(){
     recorder.stopRecording(function(){
         clearInterval(chronometerCall);
-        let blob = recorder.getBlob();
+        newGif = recorder.getBlob();
         let url = URL.createObjectURL(blob);
         video.pause();
+        video.style.display = 'none';
+        replay.style.display = 'block';
         replay = document.getElementById('gif-replay');
         replay.style.backgroundImage = "url('"+url+"')";
     });
@@ -95,12 +113,28 @@ document.getElementById('record-container').addEventListener('click',function(){
     document.getElementById('end-container').style.display = 'inherit';
 });
 
-
-document.getElementById('btn-newGif').addEventListener('click',function(){
-    document.getElementById('capture_1').style.display = 'block';
-    document.getElementById('arrow-logo-link').style.display = 'block';
-    localStorage.setItem('newGif-command','newGif-copmmand');
+document.getElementById('repeat-new-gif').addEventListener('click',function(){
+    document.getElementById('record-container').style.display = 'inherit';
+    document.getElementById('end-container').style.display = 'none';
+    video.style.display = 'block';
+    replay.style.display = 'none';
+    getStreamAndRecord();
 });
+
+
+document.getElementById('post-new-gif').addEventListener('click',function(){
+    let form = new FormData();
+    form.append('file', newGif , 'myGif.gif');
+    let responsePost = postNewGif(form,"person,webcam");
+    console.log(responsePost);
+    // if (exito){
+
+    // }else{
+
+    // }
+});
+
+
 
 let icons = document.getElementsByClassName('close-icon');
 icons[0].addEventListener('click', function(){

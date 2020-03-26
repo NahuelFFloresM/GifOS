@@ -31,3 +31,15 @@ let getUserGifs = (userid,gifsid) => new Promise((resolve,reject) =>{
     xhr.then(response => resolve(response))
     .catch(error => reject(error));
 });
+
+let postNewGif = (file,tags) => new Promise((resolve,reject) =>{
+    var xhr = $.post('https://upload.giphy.com/v1/gifs?api_key=' + apiKey + '&file=' + file + '&tags='+tags);
+    xhr.onprogress = function (e) {
+        if (e.lengthComputable) {
+            console.log(e.loaded+  " / " + e.total)
+        }
+    }
+    xhr.then(response => resolve(response))
+    .catch(error => reject(error));
+});
+
