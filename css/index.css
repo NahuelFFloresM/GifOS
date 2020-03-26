@@ -45,6 +45,10 @@
 
 .gif-replay {
   animation: like-gif steps(28) 1s infinite both;
+  width: 100%;
+  height: 100%;
+  max-width: 832px;
+  max-height: 424px;
 }
 
 * {
@@ -374,6 +378,9 @@
   margin: 75px 20% 153px 20%;
   height: 384px;
   padding: 3px;
+  width: 100%;
+  max-width: 721px;
+  max-height: 391px;
   background: #E6E6E6;
   box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
   font-family: "Chakra Petch", sans-serif;
@@ -468,10 +475,6 @@
   display: inherit;
 }
 
-#capture_1, #capture_2, #record-container, #end-container, #arrow-logo-link, #post-container {
-  display: none;
-}
-
 #capture-btn {
   display: inline-flex;
 }
@@ -542,6 +545,10 @@
   margin: 8px 14px 21px 8px;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 #loading-content {
   width: 100%;
   height: 100%;
@@ -572,7 +579,70 @@
 }
 #loading-content h4 span {
   color: rgba(17, 0, 56, 0.64);
-  text-decoration: line-through;
+}
+
+#gif-video {
+  width: 100%;
+  height: 100%;
+  max-width: 832px;
+  max-height: 424px;
+}
+
+#done-gif-buttons {
+  display: flex;
+  flex-direction: column;
+}
+#done-gif-buttons h3 {
+  font-weight: 700;
+  font-size: 16px;
+  color: #110038;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+#final-content {
+  display: flex;
+  margin-top: 29px;
+  margin-bottom: 64px;
+}
+#final-content #gif-complete-container {
+  height: 100%;
+  width: 100%;
+  max-height: 191px;
+  max-width: 365px;
+  margin-left: 27px;
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+}
+#final-content img {
+  height: 100%;
+  width: 100%;
+  max-height: 191px;
+  max-width: 365px;
+  padding: 3px;
+  opacity: 0.3;
+}
+#final-content .btn {
+  width: 100%;
+  margin: 8px 0px 8px 0px;
+}
+#final-content #done-gif-buttons {
+  width: 100%;
+  padding: 20px 46px 0px 24px;
+}
+
+.pos-bt-36px {
+  bottom: 36px;
+}
+
+#done-btn {
+  position: relative;
+  right: 10px;
+}
+
+#capture_1, #capture_2, #record-container, #end-container, #arrow-logo-link, #post-container, #final-content, #done-gif-buttons {
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

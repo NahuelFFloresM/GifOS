@@ -124,9 +124,8 @@ document.getElementById('repeat-new-gif').addEventListener('click',function(){
 
 
 document.getElementById('post-new-gif').addEventListener('click',function(){
-    document.getElementById('gif-replay').style.display = 'none';
+    document.getElementById('gif-replay').style.display = 'none';    
     document.getElementById('end-container').style.display = 'none';
-
     document.getElementById('loading-content').style.display = 'flex';
     document.getElementById('post-container').style.display = 'block';
     let form = new FormData();
@@ -134,10 +133,19 @@ document.getElementById('post-new-gif').addEventListener('click',function(){
     postNewGif(data,tags).then(response => {
         saveLocalGif(response.data.id);
         getGif(response.data.id,localStorage.getItem('giphyUserId'));
+        document.getElementById('capture_2').style.display = 'none';
+        document.getElementById('initial-content').style.display = 'none';
+        document.getElementById('cancel-new-gif').style.display = 'none';
+        document.getElementById('start-new-gif').style.display = 'none';
+        document.getElementById('done-btn').style.display = 'block';
+        document.getElementById('end-container').style.display = 'block';
+        document.getElementById('capture_1').style.display = 'block';
     }).catch(error => {
         console.log(error)
     });
 });
+
+// .new-gif-window
 
 
 

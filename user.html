@@ -32,8 +32,9 @@
             </div>
         </div>
         <div class="new-gif-window pos-relative" id="capture_1">
+            <!-- Cuadro Inicial -->
             <header class="top-bar theme-day">Crear Guifos</header>
-            <div class="new-gif-window-content">
+            <div class="new-gif-window-content" id="initial-content">
                 <h4>Aquí podrás crear tus propios guifos</h4>
                 <p>Crear tu <b>guifo</b> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</p>
                 <ol>
@@ -44,17 +45,30 @@
                     <li>¿Quieres comenzar a crear tu <b>guifo</b> ahora?</li>
                 </ol>
             </div>
-            <div class="pos-absolute pos-r-36px">
+            <!--Cuadro Final-->
+            <div id="final-content">
+                <div id="gif-complete-container">
+                    <img src="" id="gif-to-download" alt="Gif Posted">
+                </div>                
+                <div class="pos-relative" id="done-gif-buttons">
+                    <h3>Guifo creado con éxito</h3>
+                    <button class="btn" id="copy-post-container">Copiar Enlace Guifo</button>
+                    <button class="btn" id="download-post-container">Descargar Guifo</button>
+                </div>
+            </div>
+            <div class="pos-absolute pos-r-36px pos-bt-36px">
                 <button class="btn btn-16r cancel-new-gif" id="cancel-new-gif">Cancelar</button>
                 <button class="btn theme-day" id="start-new-gif">Comenzar</button>
+                <button class="btn theme-day" id="done-btn" hidden>Listo</button>
             </div>
         </div>
         <div class="video-window pos-relative" id="capture_2">
+            <!--CONTENIDO DE LA CAPTURA-->
             <header class="text-bar top-bar theme-day" id="video-header">Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
             <div class="video-content">
                 <div id="window-content">
-                    <video width="832" height="424" id="gif-video" type="image/gif"></video>
-                    <img src="" width="832" height="424" id="gif-replay" hidden alt="Replay Video">
+                    <video id="gif-video" type="image/gif"></video>
+                    <img src="" id="gif-replay" hidden alt="Replay Video">
                     <div id="loading-content">
                         <img src="./assets/globe_img.png" alt="Globe image">
                         <h3>Estamos subiendo tu guifo…</h3>
@@ -63,6 +77,7 @@
                     </div>
                 </div>
             </div>
+            <!--BOTONES DE LA CAPTURA-->
             <div id="capture-btn">
                 <div class="pos-absolute pos-r-36px" id="camera-container">
                     <button class="btn btn-theme-day"><img src="./assets/camera.svg" alt="Capture Icon" class="icon"></button>
