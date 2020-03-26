@@ -123,6 +123,11 @@ document.getElementById('repeat-new-gif').addEventListener('click',function(){
 
 
 document.getElementById('post-new-gif').addEventListener('click',function(){
+    document.getElementById('gif-replay').srtyle.display = 'none';
+    document.getElementById('record-container').style.display = 'none';
+
+    document.getElementById('loading-content').srtyle.display = 'block';
+    document.getElementById('post-container').srtyle.display = 'block';
     let form = new FormData();
     form.append('file', newGif , 'myGif.gif');
     let responsePost = postNewGif(form,"person,webcam");
