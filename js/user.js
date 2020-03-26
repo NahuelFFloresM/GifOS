@@ -102,11 +102,12 @@ document.getElementById('record-container').addEventListener('click',function(){
     recorder.stopRecording(function(){
         clearInterval(chronometerCall);
         newGif = recorder.getBlob();
-        let url = URL.createObjectURL(blob);
+        let url = URL.createObjectURL(newGif);
         video.pause();
         video.style.display = 'none';
         replay.style.display = 'block';
         replay = document.getElementById('gif-replay');
+        replay.src="";
         replay.style.backgroundImage = "url('"+url+"')";
     });
     document.getElementById('record-container').style.display = 'none';
@@ -123,20 +124,19 @@ document.getElementById('repeat-new-gif').addEventListener('click',function(){
 
 
 document.getElementById('post-new-gif').addEventListener('click',function(){
-    document.getElementById('gif-replay').srtyle.display = 'none';
-    document.getElementById('record-container').style.display = 'none';
+    document.getElementById('gif-replay').style.display = 'none';
+    document.getElementById('end-container').style.display = 'none';
 
-    document.getElementById('loading-content').srtyle.display = 'block';
-    document.getElementById('post-container').srtyle.display = 'block';
+    document.getElementById('loading-content').style.display = 'flex';
+    document.getElementById('post-container').style.display = 'block';
     let form = new FormData();
     form.append('file', newGif , 'myGif.gif');
-    let responsePost = postNewGif(form,"person,webcam");
-    console.log(responsePost);
-    // if (exito){
-
-    // }else{
-
-    // }
+    postNewGif(data,tags).then(response => {
+        saveLocalGif(response.data.id);
+        getGif(response.data.id,localStorage.getItem('giphyUserId'));
+    }).catch(error => {
+        console.log(error)
+    });
 });
 
 
@@ -157,10 +157,11 @@ if (actualTheme == 'night'){
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");    
     
-    if (userNew()){
-        let user = getUserID();
+    if (!userNew()){
+        let user = localStorage.getItem('giphyUserId');
         loadUserGifs(user);
     }
+
     if (localStorage.getItem('newGif-command')){
         document.getElementById('capture_1').style.display = 'block';
         document.getElementById('arrow-logo-link').style.display = 'block';

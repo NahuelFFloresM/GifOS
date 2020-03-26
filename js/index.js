@@ -254,6 +254,12 @@ window.addEventListener('scroll',function(event){
     }
 });
 
+function userNew(){
+    let response = false;
+    if (localStorage.getItem('giphyUserId')) return true;
+    return response;
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
     scrollCount = 9;

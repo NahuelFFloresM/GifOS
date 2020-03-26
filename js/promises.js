@@ -8,6 +8,14 @@ let getLimitGifs = (search,limit,offset) => new Promise((resolve,reject) =>{
     .catch(error => reject(error));
 });
 
+let getGif = (id,user = '') => new Promise((resolve,reject) =>{
+    let extension = '';
+    if (user) extension = '&random_id='+ user;
+    var xhr = $.get('https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&gif_id' + id + extension);
+    xhr.then(response => resolve(response))
+    .catch(error => reject(error));
+})
+
 let getTrendsGifs = (limit,offset) => new Promise((resolve,reject) =>{
     var xhr = $.get('https://api.giphy.com/v1/gifs/trending?api_key=' + apiKey + '&limit='+ limit + '&offset='+ offset);
     xhr.then(response => resolve(response))
@@ -33,13 +41,21 @@ let getUserGifs = (userid,gifsid) => new Promise((resolve,reject) =>{
 });
 
 let postNewGif = (file,tags) => new Promise((resolve,reject) =>{
-    var xhr = $.post('https://upload.giphy.com/v1/gifs?api_key=' + apiKey + '&file=' + file + '&tags='+tags);
-    xhr.onprogress = function (e) {
-        if (e.lengthComputable) {
-            console.log(e.loaded+  " / " + e.total)
-        }
-    }
-    xhr.then(response => resolve(response))
+    // var xhr = $.post('https://upload.giphy.com/v1/gifs?api_key=' + apiKey + '&file=' + file + '&tags='+tags);
+    // xhr.onprogress = function (e) {
+    //     if (e.lengthComputable) {
+    //         console.log(e.loaded+  " / " + e.total)
+    //     }
+    // }
+    // xhr.then(response => resolve(response))
+    // .catch(error => reject(error));
+
+    let url = 'https://upload.giphy.com/v1/gifs?api_key=' + apiKey + '&tags='+tags;
+    fetch(url,{
+        method:'POST',
+        body: file,
+    }).then( response => resolve(response.json()))
     .catch(error => reject(error));
+
 });
 
