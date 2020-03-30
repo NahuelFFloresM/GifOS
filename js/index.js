@@ -6,6 +6,16 @@ let activeSearch = "";
 
 ///GENERAL FUNCTIONS
 //changeTheme : Funcion para cambiar el tema de la pagina
+function generateID(){
+    getNewUserId().then( response =>{
+        console.log(response);
+        let id = response.random_id;
+        localStorage.setItem('giphyUserId',id);
+    }).catch(error => {
+        console.log(error);
+    })
+}
+
 function changeTheme(theme){
     globalTheme = !globalTheme;
     localStorage.setItem('globalTheme',theme);
@@ -160,7 +170,7 @@ function getTrendingsResults(limit,offset){
             item.appendChild(img);
             item.appendChild(hasht);
             document.getElementById('trendings-container').appendChild(item);
-        })        
+        })
     }).catch(error => {
         console.log(error);
     })
@@ -255,8 +265,8 @@ window.addEventListener('scroll',function(event){
 });
 
 function userNew(){
-    let response = false;
-    if (localStorage.getItem('giphyUserId')) return true;
+    let response = true;
+    if (localStorage.getItem('giphyUserId')) return false;
     return response;
 }
 
@@ -267,11 +277,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (actualTheme == 'night'){
         changeTheme('night');
     }
+    console.log(userNew());
 
-    if (!userNew()){
-        UserAppId = generateID();
+    if (userNew()){
+        generateID();
     } else{
         UserAppId = localStorage.getItem('giphyUserId');
+        console.log(UserAppId);
     }
     for (var i = 0; i < 4; i++){
         getRandomResults();

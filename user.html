@@ -27,14 +27,15 @@
                     </div>
                 </div>
                 <div class="pos-relative theme-day hover-day" id="mis-guifos">
-                    <a href="#"><span class="short_underline"></span> Mis Guifos</a>
+                    <a href="user.html"><span class="short_underline"></span> Mis Guifos</a>
                 </div>
             </div>
         </div>
         <div class="new-gif-window pos-relative" id="capture_1">
             <!-- Cuadro Inicial -->
-            <header class="top-bar theme-day">Crear Guifos</header>
+            <header class="text-bar top-bar theme-day">Crear Guifos <img class="close-icon" src="./assets/close.svg" alt="Close Window"></header>
             <div class="new-gif-window-content" id="initial-content">
+                <img src="./assets/window_img.png" alt="Window icon" id="win-icon">
                 <h4>Aquí podrás crear tus propios guifos</h4>
                 <p>Crear tu <b>guifo</b> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</p>
                 <ol>
@@ -69,6 +70,7 @@
                 <div id="window-content">
                     <video id="gif-video" type="image/gif"></video>
                     <img src="" id="gif-replay" hidden alt="Replay Video">
+                    <canvas id="canvas-img" width="800" height="800">
                     <div id="loading-content">
                         <img src="./assets/globe_img.png" alt="Globe image">
                         <h3>Estamos subiendo tu guifo…</h3>
@@ -84,6 +86,10 @@
                     <button class="btn btn-theme-day" id="btn-capture">Capturar</button>
                 </div>
                 <div id="gif-cronometer"></div>
+                <button class="mini-btn"id="replay-button">
+                    <img src="./assets/forward.svg" id="forward-img" alt="play-button">
+                </button>
+                <!-- <div class="loading-bar" id="loading-bar-replay"></div> -->
                 <div class="pos-absolute pos-r-36px" id="record-container">
                     <button class="btn "><img src="./assets/recording.svg" alt="Ready Icon" class="icon"></button>
                     <button class="btn " id="btn-ready">Listo</button>
@@ -93,13 +99,15 @@
                     <button class="btn theme-day" id="post-new-gif">Subir Guifo</button>
                 </div>
                 <div class="pos-absolute pos-r-36px" id="post-container">
-                    <button class="btn btn-16r cancel-new-gif" id="cancel-post-contianer">Cancelar</button>
+                    <button class="btn btn-16r cancel-new-gif" id="cancel-post-btn">Cancelar</button>
                 </div>
             </div>
             
-        </div>
-        
+        </div>        
         <input id="suggestions-title" type="text" placeholder="Mis Guifos">
+        <div id="trendings-container">
+        </div>
+        </canvas>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>

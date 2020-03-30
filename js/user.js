@@ -1,20 +1,54 @@
 function loadUserGifs(user){
-    let gifs = getUserGifs();
-    var response = getUserGifs(user,gifs);
-    console.log(response);
-    // response.array.forEach(element => {
-        
-    // });
+    let id = JSON.parse(localStorage.getItem('Gifs_IDs') || []);
+    
+    id.forEach( element => {
+        getUserGifs(user,element).then( response => {
+            response.data.forEach( element => {
+                let item = document.createElement('div');
+                let slug = getSlug(element.slug);
+                item.className += 'trend-item';
+                // item.onclick = function() {
+                //     document.getElementById('suggestions-title').style.display = 'none';
+                //     document.getElementById('suggestions-container').style.display = 'none';
+                //     document.getElementById('trends-title').placeholder = 'Ejemplo de búsqueda: '+slug;
+                //     getSearchResults(slug,12,12);
+                // }
+                let img = document.createElement('img');
+                img.className = 'img-item';
+                img.id = element.id;
+                idimg = element.id;
+                img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
+                img.alt = "..gif-alt";
+                let hasht = document.createElement('div');
+                hasht.innerHTML = slug;
+                hasht.className +='text-bar hashtag';
+                hasht.className += globalTheme ? ' theme-day':' theme-night';
+                item.appendChild(img);
+                item.appendChild(hasht);
+                document.getElementById('trendings-container').appendChild(item);
+                
+            })
+        }).catch( error =>  console.log('Hubo en error, pruebe nuevamente',error));
+    });
+    
+    
 };
 
+const sleep = (miliseconds) => {
+    return new Promise(resolve => setTimeout(resolve,miliseconds))
+}
+
 function saveLocalGif(gif_id){
-    let localSave = JSON.parse(localStorage.getItem('Gifs-IDs'));
+    let localSave = JSON.parse(localStorage.getItem('Gifs_IDs'));
     console.log(localSave);
     localSave.push(gif_id);
     localStorage.setItem('Gifs_IDs',JSON.stringify(localSave));
 }
 
+
+
 var newGif;
+var newGifUrl;
 var replay = document.getElementById('gif-replay');
 
 let video = document.getElementById('gif-video');
@@ -76,7 +110,10 @@ let cancelbtns = document.getElementsByClassName('cancel-new-gif');
 Array.prototype.forEach.call(cancelbtns, function(element) {
     element.addEventListener('click',function(){
         document.getElementById('capture_1').style.display = 'none';
+        document.getElementById('capture_2').style.display = 'none';
         document.getElementById('arrow-logo-link').style.display = 'none';
+        document.getElementById('suggestions-title').style.display = 'block';
+        document.getElementById('trendings-container').style.display = 'flex';
         localStorage.removeItem('newGif-command');
     });
 });
@@ -84,9 +121,9 @@ Array.prototype.forEach.call(cancelbtns, function(element) {
 document.getElementById('start-new-gif').addEventListener('click',function(){
     document.getElementById('capture_1').style.display = 'none';
     document.getElementById('capture_2').style.display = 'inherit';
-    document.getElementById('suggestions-title').style.opacity = 0;
+    document.getElementById('suggestions-title').style.display = 'none';
+    document.getElementById('trendings-container').style.display = 'none';
     getStreamAndRecord();
-    // ocultar mis guifos  
 });
 
 document.getElementById('camera-container').addEventListener('click',function(){
@@ -98,63 +135,105 @@ document.getElementById('camera-container').addEventListener('click',function(){
     recorder.startRecording();
 });
 
+async function drawImg(){
+    let canvas = document.getElementById('canvas-img');
+    let ctx = canvas.getContext('2d');
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+    let cimg = document.getElementById('gif-replay');
+    await sleep(1000);
+    console.log('sleeped');
+    ctx.drawImage(cimg,0,0,window.innerWidth,window.innerHeight);
+    console.log(canvas);
+}
+
 document.getElementById('record-container').addEventListener('click',function(){
     recorder.stopRecording(function(){
+        document.getElementById('video-header').innerHTML = "Vista Previa";
         clearInterval(chronometerCall);
         newGif = recorder.getBlob();
         let url = URL.createObjectURL(newGif);
         video.pause();
         video.style.display = 'none';
-        replay.style.display = 'block';
+        // replay.style.display = 'block';
+        document.getElementById('canvas-img').style.display = 'block';
         replay = document.getElementById('gif-replay');
         replay.src="";
-        replay.style.backgroundImage = "url('"+url+"')";
+        replay.src = url;
+        drawImg();        
     });
     document.getElementById('record-container').style.display = 'none';
     document.getElementById('end-container').style.display = 'inherit';
 });
 
 document.getElementById('repeat-new-gif').addEventListener('click',function(){
-    document.getElementById('record-container').style.display = 'inherit';
+    document.getElementById('camera-container').style.display = 'inherit';
+    document.getElementById('canvas-img').style.display = 'none';
     document.getElementById('end-container').style.display = 'none';
+    hours = `00`,minutes = `00`,seconds = `00`;
+    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`
+    document.getElementById('video-header').innerHTML = `Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window">`;
     video.style.display = 'block';
     replay.style.display = 'none';
     getStreamAndRecord();
 });
 
+function loadBar(width,max){
+    
+}
 
 document.getElementById('post-new-gif').addEventListener('click',function(){
     document.getElementById('gif-replay').style.display = 'none';    
     document.getElementById('end-container').style.display = 'none';
     document.getElementById('loading-content').style.display = 'flex';
     document.getElementById('post-container').style.display = 'block';
+    document.getElementById('canvas-img').style.display = 'none';
     let form = new FormData();
     form.append('file', newGif , 'myGif.gif');
-    postNewGif(data,tags).then(response => {
+    let tags = 'personal,webcam';
+    /// iniciar animacion loading
+    let loadingbar = setInterval(loadBar(),1000);
+    postNewGif(form,tags).then(response => {
         saveLocalGif(response.data.id);
         getGif(response.data.id,localStorage.getItem('giphyUserId'));
+        newGifUrl = 'https://giphy.com/gifs/'+response.data.id;            
         document.getElementById('capture_2').style.display = 'none';
         document.getElementById('initial-content').style.display = 'none';
         document.getElementById('cancel-new-gif').style.display = 'none';
         document.getElementById('start-new-gif').style.display = 'none';
+        document.getElementById('end-container').style.display = 'none';
         document.getElementById('done-btn').style.display = 'block';
-        document.getElementById('end-container').style.display = 'block';
         document.getElementById('capture_1').style.display = 'block';
+        document.getElementById('final-content').style.display = 'flex';
+        document.getElementById('done-gif-buttons').style.display = 'block';
+        document.getElementById('gif-to-download').src = URL.createObjectURL(newGif);
+        document.getElementById('suggestions-title').style.display = 'block';
+        document.getElementById('trendings-container').style.display = 'block';
     }).catch(error => {
         console.log(error)
     });
 });
 
-// .new-gif-window
-
-
+document.getElementById('done-btn').addEventListener('click',function(){
+    document.getElementById('final-content').style.display = 'none';
+    document.getElementById('done-gif-buttons').style.display = 'none';
+});
 
 let icons = document.getElementsByClassName('close-icon');
-icons[0].addEventListener('click', function(){
-    video.pause();
-    document.getElementById('capture_2').style.display = 'none';
-    localStorage.removeItem('newGif-command');
-    document.getElementById('suggestions-title').style.opacity = 1;
+Array.prototype.forEach.call(icons, function(element) {
+    element.addEventListener('click',function(){
+        document.getElementById('capture_1').style.display = 'none';
+        document.getElementById('capture_2').style.display = 'none';
+        document.getElementById('arrow-logo-link').style.display = 'none';
+        document.getElementById('suggestions-title').style.display = 'block';
+        document.getElementById('trendings-container').style.display = 'flex';
+        try{
+            video.pause();
+        } catch(error){
+            console.log(error);
+        }
+        localStorage.removeItem('newGif-command');  
+    });
 });
 
 let actualTheme = localStorage.getItem('globalTheme');
@@ -162,9 +241,42 @@ if (actualTheme == 'night'){
     changeTheme('night');
 }
 
+document.getElementById('download-post-container').addEventListener('click',function(){
+    let a = document.createElement('a');
+    a.href= URL.createObjectURL(newGif);
+    a.download ="myGif";
+    a.click();
+})
+
+function copy(){
+    let aux = document.createElement('textarea');
+    aux.id = 'textaux';
+    aux.value = newGifUrl;
+    document.getElementById('capture_2').appendChild(aux);
+    aux.select();
+    document.execCommand('copy');
+    document.getElementById('textaux').remove();
+
+}
+
+document.getElementById('copy-post-container').addEventListener('click',copy);   
+
+document.getElementById('replay-button').addEventListener('click',function(){
+    document.getElementById('canvas-img').style.display = 'none';
+    document.getElementById('gif-replay').style.display = 'block';
+});
+
+document.getElementById('gif-replay').addEventListener('ended',function(){
+    document.getElementById('canvas-img').style.display = 'block';
+    document.getElementById('gif-replay').style.display = 'none';
+});
+
+
+
+//------------------- DOM LOADED-------------------
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");    
-    
+    console.log(userNew());
     if (!userNew()){
         let user = localStorage.getItem('giphyUserId');
         loadUserGifs(user);
@@ -175,3 +287,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('arrow-logo-link').style.display = 'block';
     }
 });
+
+ 
