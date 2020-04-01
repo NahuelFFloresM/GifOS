@@ -100,8 +100,9 @@ function getSearchResults(search,limit,offset) {
             img.alt = "..gif-alt";
             var hasht = document.createElement('div');
             let slug = getSlug(element.slug);
-            hasht.innerHTML = slug;
+            hasht.innerHTML = slug;            
             hasht.className ='text-bar hashtag';
+            hasht.className+= globalTheme ? ' theme-day' : ' theme-night';
             item.appendChild(img);
             item.appendChild(hasht);
             document.getElementById('trendings-container').appendChild(item);
@@ -157,6 +158,7 @@ function getTrendingsResults(limit,offset){
                 document.getElementById('suggestions-title').style.display = 'none';
                 document.getElementById('suggestions-container').style.display = 'none';
                 document.getElementById('trends-title').placeholder = 'Ejemplo de búsqueda: '+slug;
+                slug.replace("#","");
                 getSearchResults(slug,12,12);
             }
             let img = document.createElement('img');
@@ -240,12 +242,19 @@ document.getElementById('search-input').addEventListener('input',function(event)
 
 });
 
-document.getElementById('subsearch-box').addEventListener('focusout',function(event){
-    event.target.style.display = 'none';
+document.getElementById('search-input').addEventListener('keypress',function(event){
+    let keyName = event.key;
+    if(keyName == 'Enter'){
+        let searchText = document.getElementById('search-input').value;
+        document.getElementById('subsearch-box').style.display = 'none';
+        getSearchResults(searchText,12,12);
+    }
 });
 
+
+
 document.getElementById('search-action-btn').addEventListener('click', function(event){
-    var searchText = document.getElementById('search-input').value;
+    let searchText = document.getElementById('search-input').value;
     document.getElementById('subsearch-box').style.display = 'none';
     getSearchResults(searchText,12,12);
 });
