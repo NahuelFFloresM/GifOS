@@ -652,6 +652,7 @@
 
 #replay-button {
   left: 158px;
+  display: none;
   background: #F7C9F3;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;

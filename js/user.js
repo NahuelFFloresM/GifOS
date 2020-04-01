@@ -1,5 +1,5 @@
 function loadUserGifs(user){
-    let id = JSON.parse(localStorage.getItem('Gifs_IDs') || []);
+    let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
     
     id.forEach( element => {
         getUserGifs(user,element).then( response => {
@@ -164,12 +164,15 @@ document.getElementById('record-container').addEventListener('click',function(){
     });
     document.getElementById('record-container').style.display = 'none';
     document.getElementById('end-container').style.display = 'inherit';
+    document.getElementById('replay-button').style.display = 'inherit';
+
 });
 
 document.getElementById('repeat-new-gif').addEventListener('click',function(){
     document.getElementById('camera-container').style.display = 'inherit';
     document.getElementById('canvas-img').style.display = 'none';
     document.getElementById('end-container').style.display = 'none';
+    document.getElementById('replay-button').style.display = 'none';
     hours = `00`,minutes = `00`,seconds = `00`;
     cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`
     document.getElementById('video-header').innerHTML = `Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window">`;
