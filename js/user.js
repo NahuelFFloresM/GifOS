@@ -1,3 +1,19 @@
+
+var newGif;
+var newGifUrl;
+var replay = document.getElementById('gif-replay');
+
+let video = document.getElementById('gif-video');
+var recorder;
+var chronometerCall;
+
+let hours = `00`,minutes = `00`,seconds = `00`;
+let cronometerTag = document.getElementById('gif-cronometer');
+cronometerTag.textContent = '00:00:00:00';
+
+const controller = new AbortController()
+const signal = controller.signal;
+
 function loadUserGifs(user){
     let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
     
@@ -40,24 +56,9 @@ const sleep = (miliseconds) => {
 
 function saveLocalGif(gif_id){
     let localSave = JSON.parse(localStorage.getItem('Gifs_IDs'));
-    console.log(localSave);
     localSave.push(gif_id);
     localStorage.setItem('Gifs_IDs',JSON.stringify(localSave));
 }
-
-
-
-var newGif;
-var newGifUrl;
-var replay = document.getElementById('gif-replay');
-
-let video = document.getElementById('gif-video');
-var recorder;
-var chronometerCall;
-
-let hours = `00`,minutes = `00`,seconds = `00`;
-let cronometerTag = document.getElementById('gif-cronometer');
-cronometerTag.textContent = '00:00:00:00';
 
 function chronometer() {
     seconds ++
@@ -142,9 +143,7 @@ async function drawImg(){
     ctx.canvas.height = window.innerHeight;
     let cimg = document.getElementById('gif-replay');
     await sleep(1000);
-    console.log('sleeped');
     ctx.drawImage(cimg,0,0,window.innerWidth,window.innerHeight);
-    console.log(canvas);
 }
 
 document.getElementById('record-container').addEventListener('click',function(){
@@ -174,48 +173,44 @@ document.getElementById('repeat-new-gif').addEventListener('click',function(){
     document.getElementById('end-container').style.display = 'none';
     document.getElementById('replay-button').style.display = 'none';
     hours = `00`,minutes = `00`,seconds = `00`;
-    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`
+    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
     document.getElementById('video-header').innerHTML = `Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window">`;
     video.style.display = 'block';
     replay.style.display = 'none';
     getStreamAndRecord();
 });
 
-function loadBar(width,max){
-    
-}
-
 document.getElementById('post-new-gif').addEventListener('click',async function(){
     document.getElementById('gif-replay').style.display = 'none';    
     document.getElementById('end-container').style.display = 'none';
     document.getElementById('loading-content').style.display = 'flex';
+    // document.getElementById('loading-bar-post').style.position = 'inherit';
     document.getElementById('post-container').style.display = 'block';
     document.getElementById('canvas-img').style.display = 'none';
+    document.getElementById('replay-button').style.display = 'none';
     let form = new FormData();
     form.append('file', newGif , 'myGif.gif');
     let tags = 'personal,webcam';
     /// iniciar animacion loading
-    // let loadingbar = setInterval(loadBar(),1000);
-    await sleep(2000);
-    // postNewGif(form,tags).then(response => {
-    //     saveLocalGif(response.data.id);
-    //     getGif(response.data.id,localStorage.getItem('giphyUserId'));
-    //     newGifUrl = 'https://giphy.com/gifs/'+response.data.id;            
-    //     document.getElementById('capture_2').style.display = 'none';
-    //     document.getElementById('initial-content').style.display = 'none';
-    //     document.getElementById('cancel-new-gif').style.display = 'none';
-    //     document.getElementById('start-new-gif').style.display = 'none';
-    //     document.getElementById('end-container').style.display = 'none';
-    //     document.getElementById('done-btn').style.display = 'block';
-    //     document.getElementById('capture_1').style.display = 'block';
-    //     document.getElementById('final-content').style.display = 'flex';
-    //     document.getElementById('done-gif-buttons').style.display = 'block';
-    //     document.getElementById('gif-to-download').src = URL.createObjectURL(newGif);
-    //     document.getElementById('suggestions-title').style.display = 'block';
-    //     document.getElementById('trendings-container').style.display = 'block';
-    // }).catch(error => {
-    //     console.log(error)
-    // });
+    postNewGif(form,tags,signal).then(response => {
+        saveLocalGif(response.data.id);
+        getGif(response.data.id,localStorage.getItem('giphyUserId'));
+        newGifUrl = 'https://giphy.com/gifs/'+response.data.id;            
+        document.getElementById('capture_2').style.display = 'none';
+        document.getElementById('initial-content').style.display = 'none';
+        document.getElementById('cancel-new-gif').style.display = 'none';
+        document.getElementById('start-new-gif').style.display = 'none';
+        document.getElementById('end-container').style.display = 'none';
+        document.getElementById('done-btn').style.display = 'block';
+        document.getElementById('capture_1').style.display = 'block';
+        document.getElementById('final-content').style.display = 'flex';
+        document.getElementById('done-gif-buttons').style.display = 'block';
+        document.getElementById('gif-to-download').src = URL.createObjectURL(newGif);
+        document.getElementById('suggestions-title').style.display = 'block';
+        document.getElementById('trendings-container').style.display = 'block';
+    }).catch(error => {
+        console.log(error);
+    });
 });
 
 document.getElementById('done-btn').addEventListener('click',function(){
@@ -225,6 +220,24 @@ document.getElementById('done-btn').addEventListener('click',function(){
     document.getElementById('start-new-gif').style.display = 'block';
     document.getElementById('cancel-new-gif').style.display = 'block';
     
+});
+
+document.getElementById('cancel-post-btn').addEventListener('click',function(){
+    controller.abort();
+    document.getElementById('capture_1').style.display = 'block';
+    document.getElementById('capture_2').style.display = 'none';
+    document.getElementById('gif-video').style.display = 'block';
+    document.getElementById('camera-container').style.display = 'flex';
+    document.getElementById('cancel-post-btn').style.display = 'none';
+    hours = `00`,minutes = `00`,seconds = `00`;
+    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
+    document.getElementById('loading-content').style.display = 'none';
+
+
+    
+
+    
+    // arreglar ventanas
 });
 
 let icons = document.getElementsByClassName('close-icon');
@@ -250,10 +263,7 @@ if (actualTheme == 'night'){
 }
 
 document.getElementById('download-post-container').addEventListener('click',function(){
-    let a = document.createElement('a');
-    a.href= URL.createObjectURL(newGif);
-    a.download ="myGif";
-    a.click();
+    invokeSaveAsDialog(newGif);
 })
 
 function copy(){
@@ -284,7 +294,6 @@ document.getElementById('gif-replay').addEventListener('ended',function(){
 //------------------- DOM LOADED-------------------
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");    
-    console.log(userNew());
     if (!userNew()){
         let user = localStorage.getItem('giphyUserId');
         loadUserGifs(user);

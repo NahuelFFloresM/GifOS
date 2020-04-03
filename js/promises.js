@@ -40,11 +40,12 @@ let getUserGifs = (userid,gifsid) => new Promise((resolve,reject) =>{
     .catch(error => reject(error));
 });
 
-let postNewGif = (file,tags) => new Promise((resolve,reject) =>{
+let postNewGif = (file,tags,signal) => new Promise((resolve,reject) =>{
     let url = 'https://upload.giphy.com/v1/gifs?api_key=' + apiKey + '&tags='+tags;
     fetch(url,{
         method:'POST',
         body: file,
+        signal: signal,
     }).then( response => resolve(response.json()))
     .catch(error => reject(error));
 });
