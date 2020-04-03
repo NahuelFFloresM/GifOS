@@ -11,8 +11,8 @@ let hours = `00`,minutes = `00`,seconds = `00`;
 let cronometerTag = document.getElementById('gif-cronometer');
 cronometerTag.textContent = '00:00:00:00';
 
-const controller = new AbortController()
-const signal = controller.signal;
+let controller = new AbortController()
+let signal = controller.signal;
 
 function loadUserGifs(user){
     let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
@@ -174,7 +174,8 @@ document.getElementById('repeat-new-gif').addEventListener('click',function(){
     document.getElementById('replay-button').style.display = 'none';
     hours = `00`,minutes = `00`,seconds = `00`;
     cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
-    document.getElementById('video-header').innerHTML = `Un Chequeo Antes de Empezar<img class="close-icon" src="./assets/close.svg" alt="Close Window">`;
+    document.getElementById('video-header').innerHTML = `Un Chequeo Antes de Empezar<img class="close-icon" id="close-capture2" src="./assets/close.svg" alt="Close Window">`;
+
     video.style.display = 'block';
     replay.style.display = 'none';
     getStreamAndRecord();
@@ -184,6 +185,7 @@ document.getElementById('post-new-gif').addEventListener('click',async function(
     document.getElementById('gif-replay').style.display = 'none';    
     document.getElementById('end-container').style.display = 'none';
     document.getElementById('loading-content').style.display = 'flex';
+    document.getElementById('cancel-post-btn').style.display = 'block';
     // document.getElementById('loading-bar-post').style.position = 'inherit';
     document.getElementById('post-container').style.display = 'block';
     document.getElementById('canvas-img').style.display = 'none';
@@ -224,6 +226,8 @@ document.getElementById('done-btn').addEventListener('click',function(){
 
 document.getElementById('cancel-post-btn').addEventListener('click',function(){
     controller.abort();
+    controller = new AbortController()
+    signal = controller.signal;
     document.getElementById('capture_1').style.display = 'block';
     document.getElementById('capture_2').style.display = 'none';
     document.getElementById('gif-video').style.display = 'block';
