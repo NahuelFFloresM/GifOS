@@ -213,9 +213,8 @@ async function getSuggestions(inputtext){
         if (remove) suggestions.splice(remove,1);
         console.log(suggestions);
         document.getElementById('first-search-button').innerHTML = inputtext;
-        document.getElementById('second-search-button').innerHTML = suggestions[0];
-        document.getElementById('third-search-button').innerHTML = suggestions[1];
-        
+        document.getElementById('second-search-button').innerHTML = 'Gatos';
+        document.getElementById('third-search-button').innerHTML = 'Perros';        
     });
 }
 
@@ -224,7 +223,6 @@ document.getElementById('search-input').addEventListener('input',function(event)
     var inputText = this.value;
     getSuggestions(inputText);
     if (!!inputText){
-        /// ARAMAR PARA SABER EL TEMA ACTUAL
         if (globalTheme){
             btnSearch[0].classList.replace('none-mode','day-mode');
         } else {
@@ -251,8 +249,6 @@ document.getElementById('search-input').addEventListener('keypress',function(eve
     }
 });
 
-
-
 document.getElementById('search-action-btn').addEventListener('click', function(event){
     let searchText = document.getElementById('search-input').value;
     document.getElementById('subsearch-box').style.display = 'none';
@@ -262,6 +258,22 @@ document.getElementById('search-action-btn').addEventListener('click', function(
 document.getElementById('btn-newGif').addEventListener('click', function(event){
     localStorage.setItem('newGif-command','newgif');
     window.location = "user.html";    
+});
+
+// Botones emergentes del buscador
+document.getElementById('first-search-button').addEventListener('click',function(){
+    let text = document.getElementById('first-search-button').innerHTML;
+    getSearchResults(text,12,12);
+});
+
+document.getElementById('second-search-button').addEventListener('click',function(){
+    let text = document.getElementById('first-search-button').innerHTML;
+    getSearchResults(text,12,12);
+});
+
+document.getElementById('third-search-button').addEventListener('click',function(){
+    let text = document.getElementById('first-search-button').innerHTML;
+    getSearchResults(text,12,12);
 });
 
 window.addEventListener('scroll',function(event){
