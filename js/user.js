@@ -16,37 +16,32 @@ let signal = controller.signal;
 
 function loadUserGifs(user){
     let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
-    
-    id.forEach( element => {
-        getUserGifs(user,element).then( response => {
-            response.data.forEach( element => {
-                let item = document.createElement('div');
-                let slug = getSlug(element.slug);
-                item.className += 'trend-item';
-                // item.onclick = function() {
-                //     document.getElementById('suggestions-title').style.display = 'none';
-                //     document.getElementById('suggestions-container').style.display = 'none';
-                //     document.getElementById('trends-title').placeholder = 'Ejemplo de búsqueda: '+slug;
-                //     getSearchResults(slug,12,12);
-                // }
-                let img = document.createElement('img');
-                img.className = 'img-item';
-                img.id = element.id;
-                idimg = element.id;
-                img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
-                img.alt = "..gif-alt";
-                let hasht = document.createElement('div');
-                hasht.innerHTML = slug;
-                hasht.className +='text-bar hashtag';
-                hasht.className += globalTheme ? ' theme-day':' theme-night';
-                item.appendChild(img);
-                item.appendChild(hasht);
-                document.getElementById('trendings-container').appendChild(item);
-                
-            })
-        }).catch( error =>  console.log('Hubo en error, pruebe nuevamente',error));
-    });
-    
+    if (id){
+        id.forEach( element => {
+            getUserGifs(user,element).then( response => {
+                response.data.forEach( element => {
+                    let item = document.createElement('div');
+                    let slug = getSlug(element.slug);
+                    item.className += 'trend-item';
+                    let img = document.createElement('img');
+                    img.className = 'img-item';
+                    img.id = element.id;
+                    idimg = element.id;
+                    img.src = 'https://media.giphy.com/media/'+ element.id +'/giphy.gif';
+                    img.alt = "..gif-alt";
+                    let hasht = document.createElement('div');
+                    hasht.innerHTML = slug;
+                    hasht.className +='text-bar hashtag';
+                    hasht.className += globalTheme ? ' theme-day':' theme-night';
+                    item.appendChild(img);
+                    item.appendChild(hasht);
+                    document.getElementById('trendings-container').appendChild(item);
+                })
+            }).catch( error =>  console.log('Hubo en error, pruebe nuevamente',error));
+        });
+    } else {
+        document.getElementById('trendings-container').innerHTML = `<p>¿Todavia no subiste ningun Gif?</p>`
+    }
     
 };
 
@@ -186,14 +181,12 @@ document.getElementById('post-new-gif').addEventListener('click',async function(
     document.getElementById('end-container').style.display = 'none';
     document.getElementById('loading-content').style.display = 'flex';
     document.getElementById('cancel-post-btn').style.display = 'block';
-    // document.getElementById('loading-bar-post').style.position = 'inherit';
     document.getElementById('post-container').style.display = 'block';
     document.getElementById('canvas-img').style.display = 'none';
     document.getElementById('replay-button').style.display = 'none';
     let form = new FormData();
     form.append('file', newGif , 'myGif.gif');
     let tags = 'personal,webcam';
-    /// iniciar animacion loading
     postNewGif(form,tags,signal).then(response => {
         saveLocalGif(response.data.id);
         getGif(response.data.id,localStorage.getItem('giphyUserId'));
@@ -236,11 +229,6 @@ document.getElementById('cancel-post-btn').addEventListener('click',function(){
     hours = `00`,minutes = `00`,seconds = `00`;
     cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
     document.getElementById('loading-content').style.display = 'none';
-
-
-    
-
-    
     // arreglar ventanas
 });
 
@@ -308,5 +296,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('arrow-logo-link').style.display = 'block';
     }
 });
-
- 
