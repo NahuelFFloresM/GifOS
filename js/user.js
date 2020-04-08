@@ -16,7 +16,7 @@ let signal = controller.signal;
 
 function loadUserGifs(user){
     let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
-    if (id){
+    if (id.lenght){
         id.forEach( element => {
             getUserGifs(user,element).then( response => {
                 response.data.forEach( element => {
@@ -40,7 +40,7 @@ function loadUserGifs(user){
             }).catch( error =>  console.log('Hubo en error, pruebe nuevamente',error));
         });
     } else {
-        document.getElementById('trendings-container').innerHTML = `<p>¿Todavia no subiste ningun Gif?</p>`
+        document.getElementById('trendings-container').innerHTML = `<h3>¿Todavia no subiste ningun Gif?</h3>`;
     }
     
 };
@@ -50,7 +50,7 @@ const sleep = (miliseconds) => {
 }
 
 function saveLocalGif(gif_id){
-    let localSave = JSON.parse(localStorage.getItem('Gifs_IDs'));
+    let localSave = JSON.parse(localStorage.getItem('Gifs_IDs')) || [] ;
     localSave.push(gif_id);
     localStorage.setItem('Gifs_IDs',JSON.stringify(localSave));
 }
