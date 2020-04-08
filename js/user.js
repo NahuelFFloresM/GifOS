@@ -16,8 +16,9 @@ let signal = controller.signal;
 
 function loadUserGifs(user){
     let id = JSON.parse(localStorage.getItem('Gifs_IDs')) || [];
-    if (id.lenght){
+    if (id.length){
         id.forEach( element => {
+            document.getElementById('trendings-container').innerHTML = '';
             getUserGifs(user,element).then( response => {
                 response.data.forEach( element => {
                     let item = document.createElement('div');
@@ -40,7 +41,7 @@ function loadUserGifs(user){
             }).catch( error =>  console.log('Hubo en error, pruebe nuevamente',error));
         });
     } else {
-        document.getElementById('trendings-container').innerHTML = `<h3>¿Todavia no subiste ningun Gif?</h3>`;
+        document.getElementById('trendings-container').innerHTML = `<span>¿Todavia no subiste ningun Gif?</span>`;
     }
     
 };
@@ -202,7 +203,7 @@ document.getElementById('post-new-gif').addEventListener('click',async function(
         document.getElementById('done-gif-buttons').style.display = 'block';
         document.getElementById('gif-to-download').src = URL.createObjectURL(newGif);
         document.getElementById('suggestions-title').style.display = 'block';
-        document.getElementById('trendings-container').style.display = 'block';
+        document.getElementById('trendings-container').style.display = 'flex';
     }).catch(error => {
         console.log(error);
     });
@@ -210,11 +211,13 @@ document.getElementById('post-new-gif').addEventListener('click',async function(
 
 document.getElementById('done-btn').addEventListener('click',function(){
     document.getElementById('final-content').style.display = 'none';
+    document.getElementById('done-btn').style.display = 'none';    
     document.getElementById('done-gif-buttons').style.display = 'none';
     document.getElementById('initial-content').style.display = 'block';
-    document.getElementById('start-new-gif').style.display = 'block';
-    document.getElementById('cancel-new-gif').style.display = 'block';
-    
+    document.getElementById('start-new-gif').style.display = 'initial';
+    document.getElementById('cancel-new-gif').style.display = 'initial';
+    let user = localStorage.getItem('giphyUserId');
+    loadUserGifs(user);
 });
 
 document.getElementById('cancel-post-btn').addEventListener('click',function(){
@@ -229,7 +232,6 @@ document.getElementById('cancel-post-btn').addEventListener('click',function(){
     hours = `00`,minutes = `00`,seconds = `00`;
     cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
     document.getElementById('loading-content').style.display = 'none';
-    // arreglar ventanas
 });
 
 let icons = document.getElementsByClassName('close-icon');
@@ -259,14 +261,13 @@ document.getElementById('download-post-container').addEventListener('click',func
 })
 
 function copy(){
-    let aux = document.createElement('textarea');
-    aux.id = 'textaux';
-    aux.value = newGifUrl;
-    document.getElementById('capture_2').appendChild(aux);
+    let aux = document.createElement('input');
+    aux.setAttribute('value', newGifUrl);
+    document.body.appendChild(aux);
     aux.select();
     document.execCommand('copy');
-    document.getElementById('textaux').remove();
-
+    document.body.removeChild(aux);
+    alert('Enlace copiado exitosamente!!');
 }
 
 document.getElementById('copy-post-container').addEventListener('click',copy);   
