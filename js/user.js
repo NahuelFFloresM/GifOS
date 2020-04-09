@@ -216,6 +216,20 @@ document.getElementById('done-btn').addEventListener('click',function(){
     document.getElementById('initial-content').style.display = 'block';
     document.getElementById('start-new-gif').style.display = 'initial';
     document.getElementById('cancel-new-gif').style.display = 'initial';
+
+    document.getElementById('camera-container').style.display = 'inherit';
+    document.getElementById('canvas-img').style.display = 'none';
+    document.getElementById('end-container').style.display = 'none';
+    document.getElementById('replay-button').style.display = 'none';
+    hours = `00`,minutes = `00`,seconds = `00`;
+    cronometerTag.textContent = `00:${hours}:${minutes}:${seconds}`;
+
+    document.getElementById('loading-content').style.display = 'none';
+    document.getElementById('cancel-post-btn').style.display = 'none';    
+
+    video.style.display = 'block';
+    replay.style.display = 'none';
+
     let user = localStorage.getItem('giphyUserId');
     loadUserGifs(user);
 });
