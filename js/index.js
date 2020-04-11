@@ -8,7 +8,6 @@ let activeSearch = "";
 //changeTheme : Funcion para cambiar el tema de la pagina
 function generateID(){
     getNewUserId().then( response =>{
-        console.log(response);
         let id = response.random_id;
         localStorage.setItem('giphyUserId',id);
     }).catch(error => {
@@ -298,13 +297,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (actualTheme == 'night'){
         changeTheme('night');
     }
-    console.log(userNew());
 
     if (userNew()){
         generateID();
     } else{
         UserAppId = localStorage.getItem('giphyUserId');
-        console.log(UserAppId);
     }
     for (var i = 0; i < 4; i++){
         getRandomResults();

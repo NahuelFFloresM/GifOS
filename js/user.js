@@ -304,6 +304,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (!userNew()){
         let user = localStorage.getItem('giphyUserId');
         loadUserGifs(user);
+    } else {
+        generateID();
+        let user = localStorage.getItem('giphyUserId');
+        loadUserGifs(user);
+
     }
 
     if (localStorage.getItem('newGif-command')){
