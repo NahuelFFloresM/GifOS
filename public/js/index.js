@@ -256,7 +256,7 @@ document.getElementById('search-action-btn').addEventListener('click', function(
 
 document.getElementById('btn-newGif').addEventListener('click', function(event){
     localStorage.setItem('newGif-command','newgif');
-    window.location = "user.html";    
+    window.location = "user";    
 });
 
 // Botones emergentes del buscador

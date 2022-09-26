@@ -8,4 +8,8 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 
+app.get('/user', function(req,res){
+  res.sendFile(path.join(__dirname, '/user.html'));
+})
+
 app.listen(3000);
