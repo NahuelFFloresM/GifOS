@@ -1,0 +1,22 @@
+{
+  "name": "gifos",
+  "version": "1.0.0",
+  "description": "Training proyect for js,css and html",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sqall/GifOS.git"
+  },
+  "author": "Nahuel F Flores M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sqall/GifOS/issues"
+  },
+  "homepage": "https://github.com/Sqall/GifOS#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
